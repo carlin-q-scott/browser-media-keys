@@ -1,9 +1,9 @@
 {
   "name": "browsermediakeys",
-  "title": "BrowserMediaKeys",
+  "title": "Media Keys",
+  "description": "Lets you control Pandora.com music player using the media keys on your keyboard.",
+  "author": "Carlin Scott",
   "id": "jid1-4GP7z3tkUd3Tzg",
-  "description": "a basic add-on",
-  "author": "",
   "license": "MPL 2.0",
   "version": "0.1"
 }
