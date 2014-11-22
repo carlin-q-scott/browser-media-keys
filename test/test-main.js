@@ -1,14 +1,12 @@
 var main = require("./main");
 
-exports["test main"] = function(assert)
+exports["windows play/pause"] = function(assert, done)
 {
-  assert.pass("Unit test running!");
-};
-
-exports["test main async"] = function(assert, done)
-{
-  assert.pass("async Unit test running!");
-  done();
+	require("./windowsHotkeys").AttachEventListeners(function(event)
+	{
+		assert.equal(event.key, "MediaPlayPause");
+		done();
+	});
 };
 
 require("sdk/test").run(exports);
