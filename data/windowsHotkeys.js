@@ -1,10 +1,12 @@
 /* import js-ctypes */
-var {Cu} = require("chrome");
-var {ctypes} = Cu.import("resource://gre/modules/ctypes.jsm", null);
-var win32Api = ctypes.open("user32.dll");
-function AttachEventListeners(EmitEvent)
+//var {Cu} = require("chrome");
+//var {ctypes} = Cu.import("resource://gre/modules/ctypes.jsm", null);
+
+onmessage = function(event)
 {
-	var HWND = ctypes.uintptr_t;//voidptr_t;
+var win32Api = ctypes.open("user32.dll");
+
+var HWND = ctypes.voidptr_t;
 	var RegisterHotKey = win32Api.declare
 	(
 		"RegisterHotKey",
@@ -77,15 +79,14 @@ function AttachEventListeners(EmitEvent)
 	var VK_MEDIA_NEXT_TRACK = 0xB0;
 	var VK_MEDIA_PREV_TRACK = 0xB1;
 	var VK_MEDIA_STOP = 0xB2;
-	var VK_MEDIA_PLAY_PAUSE = 0xB3
+	var VK_MEDIA_PLAY_PAUSE = 0xB3;
 	
 	var MOD_NONE = 0x0000;
-					
-	var activeWindow = GetActiveWindow();		
+	
+	var activeWindow = null;
 	if(RegisterHotKey(activeWindow, VK_MEDIA_PLAY_PAUSE, MOD_NONE, VK_MEDIA_PLAY_PAUSE)) console.log("Play/Pause hotkey registered!");
 	else console.log("Failed to register hotkey");
 	
-	var { setInterval } = require("sdk/timers");
 	var msg = new MSG;
 	setInterval(function()
 	{
@@ -95,12 +96,9 @@ function AttachEventListeners(EmitEvent)
 			if (msg.wParam == VK_MEDIA_PLAY_PAUSE)
 			{
 				console.log("Play/Pause pressed");
-				EmitEvent({key: "MediaPlayPause"});			
+				postMessage("MediaPlayPause");			
 			}
 			else console.log("message = " + msg.wParam);
 		}
-	}, 1000);
-	//win32Api.close();
+	}, 200);
 }
-
-exports.AttachEventListeners = AttachEventListeners;
