@@ -1,12 +1,9 @@
 /* import js-ctypes */
-//var {Cu} = require("chrome");
-//var {ctypes} = Cu.import("resource://gre/modules/ctypes.jsm", null);
-
 onmessage = function(event)
 {
-var win32Api = ctypes.open("user32.dll");
+	var win32Api = ctypes.open("user32.dll");
 
-var HWND = ctypes.voidptr_t;
+	var HWND = ctypes.voidptr_t;
 	var RegisterHotKey = win32Api.declare
 	(
 		"RegisterHotKey",
@@ -53,22 +50,6 @@ var HWND = ctypes.voidptr_t;
 		ctypes.uint32_t,
 		ctypes.uint32_t
 	);
-	var GetMessage = win32Api.declare
-	(
-		"GetMessageW",
-		ctypes.winapi_abi,
-		ctypes.bool,
-		LPMSG,
-		HWND,
-		ctypes.uint32_t,
-		ctypes.uint32_t
-	);
-	var GetActiveWindow = win32Api.declare
-	(
-		"GetActiveWindow",
-		ctypes.winapi_abi,
-		HWND
-	);
 	
 	var PM_REMOVE = 0x0001;
 	
@@ -84,21 +65,39 @@ var HWND = ctypes.voidptr_t;
 	var MOD_NONE = 0x0000;
 	
 	var activeWindow = null;
-	if(RegisterHotKey(activeWindow, VK_MEDIA_PLAY_PAUSE, MOD_NONE, VK_MEDIA_PLAY_PAUSE)) console.log("Play/Pause hotkey registered!");
-	else console.log("Failed to register hotkey");
+	var hotkeys = [
+		VK_MEDIA_NEXT_TRACK,
+		VK_MEDIA_PREV_TRACK,
+		VK_MEDIA_STOP,
+		VK_MEDIA_PLAY_PAUSE
+	];
+	for(let hotkey of hotkeys)
+	{
+		if(RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)) console.log("Play/Pause hotkey registered!");
+		else console.log("Failed to register hotkey");
+	}
 	
 	var msg = new MSG;
 	setInterval(function()
 	{
-		if (PeekMessage(msg.address(), activeWindow, WM_HOTKEY, WM_HOTKEY, PM_REMOVE))
-		//if (GetMessage(msg.address(), activeWindow, WM_HOTKEY, WM_HOTKEY))
+		while (PeekMessage(msg.address(), activeWindow, WM_HOTKEY, WM_HOTKEY, PM_REMOVE))
 		{
-			if (msg.wParam == VK_MEDIA_PLAY_PAUSE)
+			if (msg.wParam == VK_MEDIA_NEXT_TRACK)
 			{
-				console.log("Play/Pause pressed");
+				postMessage("MediaNextTrack");			
+			}
+			else if (msg.wParam == VK_MEDIA_PREV_TRACK)
+			{
+				postMessage("MediaPreviousTrack");			
+			}
+			else if (msg.wParam == VK_MEDIA_STOP)
+			{
+				postMessage("MediaStop");			
+			}
+			else if (msg.wParam == VK_MEDIA_PLAY_PAUSE)
+			{
 				postMessage("MediaPlayPause");			
 			}
-			else console.log("message = " + msg.wParam);
 		}
 	}, 200);
 }
