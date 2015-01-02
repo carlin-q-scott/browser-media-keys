@@ -1,10 +1,11 @@
 var tabs = require("sdk/tabs");
 var pageDomain = "pandora.com";
 var { viewFor } = require("sdk/view/core");
+var { data } = require("sdk/self");
 
 function OpenMediaWebsiteMock()
 {	
-	tabs.open("file:///C:/Users/Carlin/Documents/Projects/BrowserMediaKeys/test/pandora.com.html");
+	tabs.open(data.url("pandora.com.html"));
 }
 
 exports["test media play/pause"] = function(assert, done)
