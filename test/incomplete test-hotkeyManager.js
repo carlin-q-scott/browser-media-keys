@@ -1,8 +1,4 @@
-exports["test initialize hotkeys"] = function(assert)
-{
-	require("main.js");
-	assert.pass("hotkeys initialized");
-};
+var hkMan = require("hotkeyManager");
 
 exports["disabled toggle play"] = function(assert, done)
 {

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1 id='status'>playing</h1>
+<div class='playButton' style='display: none;' onclick='play()'>Play</div>
+<div class='pauseButton' style='' onclick='pause()'>Pause</div>
+<div class='skipButton' onclick='skipTrack()'>Skip</div>
+<script>
+var playButton = document.getElementsByClassName("playButton")[0];
+var pauseButton = document.getElementsByClassName("pauseButton")[0];
+
+function play()
+{
+	pauseButton.style = "";
+	playButton.style = "display: none";
+	document.getElementById("status").innerHTML = "playing";
+}
+
+function pause()
+{
+	playButton.style = "";
+	pauseButton.style = "display: none";
+	document.getElementById("status").innerHTML = "paused";
+}
+
+function skipTrack()
+{
+	document.getElementById("status").innerHTML = "skipped track";
+}	
+</script>
+</body>
+</html>

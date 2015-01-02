@@ -1,8 +1,23 @@
 /* import js-ctypes */
+var hotkeyListenerIntervalId;
+var win32Api;
+
 onmessage = function(event)
 {
-	var win32Api = ctypes.open("user32.dll");
+	switch (event.data)
+	{
+		case "attach":
+			AttachEventListeners();
+			break;
+		case "detach":
+			DetachEventListeners();
+			break;
+	}
+}
 
+var AttachEventListeners = function()
+{
+	win32Api = ctypes.open("user32.dll");
 	var HWND = ctypes.voidptr_t;
 	var RegisterHotKey = win32Api.declare
 	(
@@ -78,7 +93,7 @@ onmessage = function(event)
 	}
 	
 	var msg = new MSG;
-	setInterval(function()
+	hotkeyListenerIntervalId = setInterval(function()
 	{
 		while (PeekMessage(msg.address(), activeWindow, WM_HOTKEY, WM_HOTKEY, PM_REMOVE))
 		{
@@ -100,4 +115,11 @@ onmessage = function(event)
 			}
 		}
 	}, 200);
+}
+
+var DetachEventListeners = function()
+{
+	clearInterval(hotkeyListenerIntervalId);
+	win32Api.close();
+	win32Api = null;
 }
