@@ -88,8 +88,7 @@ var AttachEventListeners = function()
 	];
 	for(let hotkey of hotkeys)
 	{
-		if(RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)) console.log("Play/Pause hotkey registered!");
-		else console.log("Failed to register hotkey");
+		if(!RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)) console.log("Failed to register hotkey");
 	}
 	
 	var msg = new MSG;
