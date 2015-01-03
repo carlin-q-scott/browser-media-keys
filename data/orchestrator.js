@@ -5,22 +5,23 @@ MediaKeys.Init = function(undefined)
 {
 	self.port.on("MediaPlayPause", function(){
 		var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton);
-		if (playButton == null) return;
-		if (playButton.getAttribute("style").indexOf("display: none") < 0)
+		if (playButton != null)
 		{
 			playButton.click();
 		}
 		else
 		{
-			MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton).click();
+			var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton)
+			if (pauseButton != null) pauseButton.click();
+			else return;
 		}
 		self.port.emit("MediaPlayPause");
 	});
 
 	self.port.on("MediaNextTrack", function(){
-		var nextButton = MediaKeys.GetSingleElementByXpath(MediaKeys.nextButton);
-		if (nextButton == null) return;
-		nextButton.click();
+		var skipButton = MediaKeys.GetSingleElementByXpath(MediaKeys.skipButton);
+		if (skipButton == null) return;
+		skipButton.click();
 		self.port.emit("MediaNextTrack");
 	});
 
@@ -30,7 +31,7 @@ MediaKeys.Init = function(undefined)
 		previousButton.click();
 		self.port.emit("MediaPreviousTrack");
 	});
-	
+
 	self.port.on("MediaStop", function(){
 		var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton);
 		if (pauseButton == null) return;

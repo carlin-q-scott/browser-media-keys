@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1 id='status'>playing</h1>
+<button data-test-id='play' style='display: none;' onclick='play()' id='playButton'>Play</button>
+<button data-test-id='pause' style='' onclick='pause()' id='pauseButton'>Pause</button>
+<button data-test-id='next' onclick='nextTrack()'>Next Track</button>
+<button data-test-id='previous' onclick='previousTrack()'>Previous Track</button>
+<script>
+var playButton = document.getElementById("playButton");
+var pauseButton = document.getElementById("pauseButton");
+
+function play()
+{
+	pauseButton.style = "";
+	playButton.style = "display: none";
+	document.getElementById("status").innerHTML = "playing";
+}
+
+function pause()
+{
+	playButton.style = "";
+	pauseButton.style = "display: none";
+	document.getElementById("status").innerHTML = "paused";
+}
+
+function nextTrack()
+{
+	document.getElementById("status").innerHTML = "next track";
+}
+
+function previousTrack()
+{
+	document.getElementById("status").innerHTML = "previous track";
+}	
+</script>
+</body>
+</html>
