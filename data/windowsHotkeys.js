@@ -7,6 +7,7 @@ onmessage = function(event)
 	switch (event.data)
 	{
 		case "attach":
+			//possible race condition if win32Api is not null
 			AttachEventListeners();
 			break;
 		case "detach":
