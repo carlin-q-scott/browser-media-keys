@@ -7,7 +7,6 @@ onmessage = function(event)
 	switch (event.data)
 	{
 		case "attach":
-			//possible race condition if win32Api is not null
 			AttachEventListeners();
 			break;
 		case "detach":
@@ -18,6 +17,7 @@ onmessage = function(event)
 
 var AttachEventListeners = function()
 {
+	//possible race condition if win32Api is not null
 	win32Api = ctypes.open("user32.dll");
 	var HWND = ctypes.voidptr_t;
 	var RegisterHotKey = win32Api.declare
