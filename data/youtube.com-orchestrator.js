@@ -9,34 +9,88 @@ MediaKeys.Init = function(undefined)
 		unstarted: -1,
 		ended: 0,
 		playing: 1,
-		paused: 2
+		paused: 2,
+		buffering: 3
 	};
 	
-	self.port.on("MediaPlayPause", function(){
-		var player = unsafeWindow.document.getElementById("movie_player");
+	var playerElement = function(){
+		return unsafeWindow.document.getElementById("movie_player");
+	}
+	
+	var playIfNecesary = function(player, state)
+	{
+		switch(state)
+		{
+			case PlayerStates.unstarted:
+			case PlayerStates.ended:
+			case PlayerStates.paused:
+				player.playVideo();
+				//self.port.emit("Broadcast", "MediaPause");
+				return true;
+		}
+		return false;
+	}
+
+	var pauseIfNecesary = function(player, state)
+	{
+		switch(state)
+		{
+			case PlayerStates.playing:
+			case PlayerStates.buffering:
+				player.pauseVideo();
+				return true;
+		}
+		return false;
+	}
+	
+	self.port.on("MediaPlay"), function(){
+		var player = playerElement();
 		var status = player.getPlayerState();
-		if (status != PlayerStates.playing)
-		{
-			player.playVideo();
-		}
-		else
-		{
-			player.pauseVideo();
-		}
-		self.port.emit("MediaPlayPause");
+		playIfNecesary(player, status);
+	}
+
+	self.port.on("MediaPause"), function(){
+		var player = playerElement();
+		var status = player.getPlayerState();
+		pauseIfNecesary(player, status);
+	}
+	
+	self.port.on("MediaPlayPause", function(){
+		var player = playerElement();
+		var status = player.getPlayerState();
+		if (!playIfNecesary(player, status)) pauseIfNecesary(player, status);
 	});
 
 	self.port.on("MediaNextTrack", function(){
-		unsafeWindow.document.getElementById("movie_player").nextVideo()
+		playerElement().nextVideo()
 	});
 
 	self.port.on("MediaPreviousTrack", function(){
-		unsafeWindow.document.getElementById("movie_player").previousVideo()
+		playerElement().previousVideo()
 	});
 
 	self.port.on("MediaStop", function(){
-		unsafeWindow.document.getElementById("movie_player").stopVideo()
+		playerElement().stopVideo()
 	});
+	
+	//automatically pause other players while playing a video and resume them when done
+	var latestState;
+	window.setInterval(function(){
+		var state = playerElement().getPlayerState();
+		if (state != latestState)
+		{
+			latestState = state;
+			switch(state)
+			{
+				case PlayerStates.playing:
+					self.port.emit("Broadcast", "MediaPause");
+					break;
+				case PlayerStates.ended:
+					self.port.emit("Broadcast", "MediaPlay");
+					break;
+			}
+		}
+	}, 1500);
 }
 
 MediaKeys.Init();

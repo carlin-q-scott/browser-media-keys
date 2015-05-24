@@ -1,6 +1,7 @@
 var tabs = require("sdk/tabs");
 var { viewFor } = require("sdk/view/core");
 var { data } = require("sdk/self");
+var { setTimeout } = require("sdk/timers");
 
 function OpenMediaWebsiteMock(domain)
 {	
@@ -53,20 +54,20 @@ function TestPlayPauseFor(pageDomain, assert, done)
 			contentScript: "self.port.on('status', function(){ self.port.emit('status', document.getElementById('status').innerHTML); });"
 		});
 		
-		pageWorker.port.once("MediaPlayPause", function(){
+		setTimeout(function(){
 			pageStatusWorker.port.once('status', function(status){
 				assert.equal(status, "paused", "expected player to be paused after pausing");
-				pageWorker.port.once("MediaPlayPause", function(){
+				setTimeout(function(){
 					pageStatusWorker.port.once('status', function(status){
 						assert.equal(status, "playing", "expected player to be playing after clicking play");
 						tab.close(done);
 					});
 					pageStatusWorker.port.emit('status');
-				});
+				}, 100);
 				pageWorker.port.emit("MediaPlayPause");
 			});
 			pageStatusWorker.port.emit('status');
-		});
+		}, 100);
 		
 		pageStatusWorker.port.once('status', function(status){
 			assert.equal(status, "playing", "expected player to initially be playing");
@@ -92,13 +93,13 @@ function TestMediaEvent(pageDomain, mediaEvent, assert, done)
 			contentScript: "self.port.on('status', function(){ self.port.emit('status', document.getElementById('status').innerHTML); });"
 		});
 		
-		pageWorker.port.once(mediaEvent, function(){
+		setTimeout(function(){
 			pageStatusWorker.port.once('status', function(status){
 				assert.notEqual(status, initialStatus, "expected player status to change");
 				tab.close(done);
 			});
 			pageStatusWorker.port.emit('status');
-		});
+		}, 100);
 		
 		pageStatusWorker.port.once('status', function(status){
 			initialStatus = status;
