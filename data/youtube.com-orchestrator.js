@@ -37,6 +37,6 @@ MediaKeys.Init = function(undefined)
 	self.port.on("MediaStop", function(){
 		unsafeWindow.document.getElementById("movie_player").stopVideo()
 	});
-}
+};
 
 MediaKeys.Init();

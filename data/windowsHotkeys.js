@@ -13,7 +13,7 @@ onmessage = function(event)
 			DetachEventListeners();
 			break;
 	}
-}
+};
 
 var AttachEventListeners = function()
 {
@@ -115,11 +115,12 @@ var AttachEventListeners = function()
 			}
 		}
 	}, 200);
-}
+};
 
 var DetachEventListeners = function()
 {
 	clearInterval(hotkeyListenerIntervalId);
 	win32Api.close();
-	win32Api = null;
-}
+    win32Api = null;
+    console.log("closed win32 API");
+};
