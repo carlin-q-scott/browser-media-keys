@@ -70,10 +70,10 @@ function TestPlayPauseFor(pageDomain, assert, done)
 		
 		pageStatusWorker.port.once('status', function(status){
 			assert.equal(status, "playing", "expected player to initially be playing");
+
+            pageWorker.port.emit("MediaPlayPause");
 		});
 		pageStatusWorker.port.emit('status');
-		
-		pageWorker.port.emit("MediaPlayPause");
 	});
 	
 	OpenMediaWebsiteMock(pageDomain);
@@ -102,10 +102,11 @@ function TestMediaEvent(pageDomain, mediaEvent, assert, done)
 		
 		pageStatusWorker.port.once('status', function(status){
 			initialStatus = status;
+            console.log("initial status: " + initialStatus);
+
+            pageWorker.port.emit(mediaEvent);
 		});
 		pageStatusWorker.port.emit('status');
-		
-		pageWorker.port.emit(mediaEvent);
 	});
 	
 	OpenMediaWebsiteMock(pageDomain);
