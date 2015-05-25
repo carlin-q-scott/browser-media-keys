@@ -3,7 +3,7 @@ var hotkeyManager;
 
 //attach content scripts to appropriate websites
 exports.main = function (options, callbacks) {
-    hotkeyManager = require("hotkeyManager");
+    hotkeyManager = require("./lib/hotkeyManager");
     hotkeyManager.RegisterContentScripts(supportedPageDomains);
 };
 

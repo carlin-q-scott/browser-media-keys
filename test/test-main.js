@@ -1,6 +1,6 @@
 exports["test initialize hotkeys"] = function(assert)
 {
-	require("main.js");
+	require("../index");
 	assert.pass("hotkeys initialized");
 };
 

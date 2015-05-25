@@ -1,4 +1,4 @@
-var hotkeyWorker = require("firefoxHotkeys.js")
+var hotkeyWorker = require("../lib/firefoxHotkeys")
 var pageDomain = "pandora.com";
 
 exports["test register/de-register hotkeys"] = function(assert)
