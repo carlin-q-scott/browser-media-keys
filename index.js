@@ -1,4 +1,4 @@
-var supportedPageDomains = ["pandora.com", "tidalhifi.com", "youtube.com", "bandcamp.com"];
+var supportedPageDomains = ["pandora.com", "tidalhifi.com", "youtube.com", "bandcamp.com", "play.google.com"];
 var hotkeyManager;
 
 //attach content scripts to appropriate websites
