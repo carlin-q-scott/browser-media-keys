@@ -50,7 +50,7 @@ MediaKeys.Init = function(undefined)
 			self.port.emit(keyId);
 		};
 	};
-	self.port.on("MediaPreviousTrack", previousTrack("MediaNextTrack"));
+	self.port.on("MediaPreviousTrack", previousTrack("MediaPreviousTrack"));
 	self.port.on("MediaTrackPrevious", previousTrack("MediaTrackPrevious")); //Gecko 37+
 
 	var pause = function(keyId) {
