@@ -4,65 +4,55 @@
  * Supports backwards compatibility with older Gecko key values.
  * See https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
  */
-MediaKeys.Init = function(undefined)
+MediaKeys.Init = function()
 {
 	self.port.on("MediaPlay", function() {
 		var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton);
 		if (playButton == null) return;
 		playButton.click();
-		self.port.emit("MediaPlay");
+		self.port.emit("Play");
 	});
 
-	var playPause = function(keyId){
-		return function(){
-			var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton);
-			if (playButton != null)
-			{
-				playButton.click();
-			}
-			else
-			{
-				var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton)
-				if (pauseButton != null) pauseButton.click();
-				else return;
-			}
-			self.port.emit(keyId);
-		};
-	};
-	self.port.on("MediaPlayPause", playPause("MediaPlayPause"));
+    self.port.on("MediaPlayPause", function() {
+        var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton);
+        if (playButton != null)
+        {
+            playButton.click();
+            self.port.emit("Play");
+        }
+        else
+        {
+            var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton);
+            if (pauseButton != null) pauseButton.click();
+            else return;
+            self.port.emit("Pause");
+        }
+	});
 
-	var nextTrack = function(keyId) {
-		return function(){
-			var skipButton = MediaKeys.GetSingleElementByXpath(MediaKeys.skipButton);
-			if (skipButton == null) return;
-			skipButton.click();
-			self.port.emit(keyId);
-		};
-	};
-	self.port.on("MediaNextTrack", nextTrack("MediaNextTrack"));
-	self.port.on("MediaTrackNext", nextTrack("MediaTrackNext")); //Gecko 37+
+	self.port.on("MediaTrackNext", function() {
+        var skipButton = MediaKeys.GetSingleElementByXpath(MediaKeys.skipButton);
+        if (skipButton == null) return;
+        skipButton.click();
+        self.port.emit("Next");
+    });
 
-	var previousTrack = function(keyId) {
-		return function(){
-			var previousButton = MediaKeys.GetSingleElementByXpath(MediaKeys.previousButton);
-			if (previousButton == null) return;
-			previousButton.click();
-			self.port.emit(keyId);
-		};
-	};
-	self.port.on("MediaPreviousTrack", previousTrack("MediaPreviousTrack"));
-	self.port.on("MediaTrackPrevious", previousTrack("MediaTrackPrevious")); //Gecko 37+
+    self.port.on("MediaTrackPrevious", function() {
+        var previousButton = MediaKeys.GetSingleElementByXpath(MediaKeys.previousButton);
+        if (previousButton == null) return;
+        previousButton.click();
+        self.port.emit("Previous");
+	});
 
-	var pause = function(keyId) {
+	var pause = function() {
 		return function(){
 			var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton);
 			if (pauseButton == null) return;
 			pauseButton.click();
-			self.port.emit("MediaStop");
+			self.port.emit("Pause");
 		};
 	};
-	self.port.on("MediaPause", pause("MediaPause"));
-	self.port.on("MediaStop", pause("MediaStop"));
-}
+	self.port.on("MediaPause", pause());
+	self.port.on("MediaStop", pause());
+};
 
 MediaKeys.Init();

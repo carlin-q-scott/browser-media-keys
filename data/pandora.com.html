@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1 id='status'>playing</h1>
+<h1 id='status'>Play</h1>
 <div class='playButton' style='display: none;' onclick='play()'>Play</div>
 <div class='pauseButton' style='' onclick='pause()'>Pause</div>
 <div class='skipButton' onclick='skipTrack()'>Skip</div>
@@ -13,19 +13,19 @@ function play()
 {
 	pauseButton.style = "";
 	playButton.style = "display: none";
-	document.getElementById("status").innerHTML = "playing";
+	document.getElementById("status").innerHTML = "Play";
 }
 
 function pause()
 {
 	playButton.style = "";
 	pauseButton.style = "display: none";
-	document.getElementById("status").innerHTML = "paused";
+	document.getElementById("status").innerHTML = "Pause";
 }
 
 function skipTrack()
 {
-	document.getElementById("status").innerHTML = "skipped track";
+	document.getElementById("status").innerHTML = "Next";
 }	
 </script>
 </body>

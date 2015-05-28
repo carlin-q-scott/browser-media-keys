@@ -100,11 +100,11 @@ var AttachEventListeners = function()
 		{
 			if (msg.wParam == VK_MEDIA_NEXT_TRACK)
 			{
-				postMessage("MediaNextTrack");			
+				postMessage("MediaTrackNext");
 			}
 			else if (msg.wParam == VK_MEDIA_PREV_TRACK)
 			{
-				postMessage("MediaPreviousTrack");			
+				postMessage("MediaTrackPrevious");
 			}
 			else if (msg.wParam == VK_MEDIA_STOP)
 			{
