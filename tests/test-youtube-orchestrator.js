@@ -5,10 +5,15 @@ var pageWorker;
 
 function OpenMediaWebsiteMock(pageDomain, done)
 {
-    var MediaKeys = {pageDomain: "*"};
     tabs.once('ready', function(tab) {
+        var pageScript = data.load("./youtube.com-orchestrator-pageScript.js");
+
         pageWorker = tab.attach({
-            contentScriptFile: "./youtube.com-orchestrator.js"
+            contentScriptFile: "./youtube.com-orchestrator.js",
+            contentScriptOptions: {
+                pageScript: pageScript,
+                pageDomain: "*"
+            }
         });
         done();
     });
