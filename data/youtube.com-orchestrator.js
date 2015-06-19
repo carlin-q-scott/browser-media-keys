@@ -5,10 +5,10 @@ if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
 MediaKeys.Init = function()
 {
-    var pageDomain = self.options.pageDomain;
+    var pageDomain = window.location.origin;
     var pageScript = document.createElement("script");
-    pageScript.id = "MediaKeysPageScript";
-    pageScript.innerHTML = self.options.pageScript.replace("self.options.pageDomain", '"' + pageDomain + '"');
+    pageScript.id = "Media Keys page-script";
+    pageScript.src = self.options.pageScript;
     document.body.appendChild(pageScript);
 
     self.port.on("MediaPlayPause", function(){ window.postMessage("MediaPlayPause", pageDomain) });

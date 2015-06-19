@@ -6,13 +6,12 @@ var pageWorker;
 function OpenMediaWebsiteMock(pageDomain, done)
 {
     tabs.once('ready', function(tab) {
-        var pageScript = data.load("./youtube.com-orchestrator-pageScript.js");
+        var pageScript = data.url("./youtube.com-orchestrator-pageScript.js");
 
         pageWorker = tab.attach({
             contentScriptFile: "./youtube.com-orchestrator.js",
             contentScriptOptions: {
-                pageScript: pageScript,
-                pageDomain: "*"
+                pageScript: pageScript
             }
         });
         done();

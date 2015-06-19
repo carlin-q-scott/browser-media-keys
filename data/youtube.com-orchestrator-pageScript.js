@@ -4,7 +4,7 @@
 if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
 MediaKeys.init = function() {
-    var pageDomain = self.options.pageDomain;
+    var pageDomain = window.location.origin;
     var PlayerStates = {
         unstarted: -1,
         ended: 0,
