@@ -29,7 +29,7 @@ MediaKeys.Init = function()
     });
 
     self.port.on("detach", function(){
-        document.body.removeChild(pageScript);
+        if (document.body && document.body.contains(pageScript)) document.body.removeChild(pageScript);
     });
 };
 
