@@ -7,9 +7,15 @@ MediaKeys.Init = function()
 {
     var pageDomain = window.location.origin;
     var pageScript = document.createElement("script");
-    pageScript.id = "Media Keys page-script";
-    pageScript.src = self.options.pageScript;
-    document.body.appendChild(pageScript);
+
+    var attachPageScript = function(){
+        pageScript.id = "media-keys";
+        pageScript.src = self.options.pageScript;
+        document.body.appendChild(pageScript);
+    };
+    attachPageScript();
+
+    self.port.on("attach", attachPageScript);
 
     self.port.on("MediaPlayPause", function(){ window.postMessage("MediaPlayPause", pageDomain) });
     self.port.on("MediaPlay", function(){ window.postMessage("MediaPlay", pageDomain) });
@@ -20,6 +26,10 @@ MediaKeys.Init = function()
 
     window.addEventListener("message", function(event) {
         self.port.emit(event.data);
+    });
+
+    self.port.on("detach", function(){
+        document.body.removeChild(pageScript);
     });
 };
 
