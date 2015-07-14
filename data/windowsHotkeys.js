@@ -90,7 +90,12 @@ var AttachEventListeners = function()
 	);
 	for(let hotkey of hotkeys)
 	{
-		if(!RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)) console.log("Failed to register hotkey: " + hotkey);
+		if(!RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)){
+			console.log("Failed to register hotkey: " + hotkey);
+			postMessage("attach failed");
+			DetachEventListeners();
+			return;
+		}
 	}
 	
 	var msg = new MSG;
