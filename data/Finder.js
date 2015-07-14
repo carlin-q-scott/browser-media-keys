@@ -3,8 +3,12 @@
  */
 if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
-MediaKeys.GetSingleElementByXpath = function(path)
+MediaKeys.GetSingleElementByXpath = function(path, docXPath)
 {
+	var docElement;
+	if (docXPath) docElement = MediaKeys.GetSingleElementByXpath(docXPath).contentDocument;
+	else docElement = document;
+
 	//console.log("looking for " + path + " on " + document.URL);
-	return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+	return docElement.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 };

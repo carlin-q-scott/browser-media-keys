@@ -7,14 +7,14 @@
 MediaKeys.Init = function()
 {
 	self.port.on("MediaPlay", function() {
-		var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton);
+		var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton, MediaKeys.basePlayer);
 		if (playButton == null) return;
 		playButton.click();
 		self.port.emit("Play");
 	});
 
     self.port.on("MediaPlayPause", function() {
-        var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton);
+        var playButton = MediaKeys.GetSingleElementByXpath(MediaKeys.playButton, MediaKeys.basePlayer);
         if (playButton != null)
         {
             playButton.click();
@@ -22,7 +22,7 @@ MediaKeys.Init = function()
         }
         else
         {
-            var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton);
+            var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton, MediaKeys.basePlayer);
             if (pauseButton != null) pauseButton.click();
             else return;
             self.port.emit("Pause");
@@ -30,14 +30,14 @@ MediaKeys.Init = function()
 	});
 
 	self.port.on("MediaTrackNext", function() {
-        var skipButton = MediaKeys.GetSingleElementByXpath(MediaKeys.skipButton);
+        var skipButton = MediaKeys.GetSingleElementByXpath(MediaKeys.skipButton, MediaKeys.basePlayer);
         if (skipButton == null) return;
         skipButton.click();
         self.port.emit("Next");
     });
 
     self.port.on("MediaTrackPrevious", function() {
-        var previousButton = MediaKeys.GetSingleElementByXpath(MediaKeys.previousButton);
+        var previousButton = MediaKeys.GetSingleElementByXpath(MediaKeys.previousButton, MediaKeys.basePlayer);
         if (previousButton == null) return;
         previousButton.click();
         self.port.emit("Previous");
@@ -45,7 +45,7 @@ MediaKeys.Init = function()
 
 	var pause = function() {
 		return function(){
-			var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton);
+			var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton, MediaKeys.basePlayer);
 			if (pauseButton == null) return;
 			pauseButton.click();
 			self.port.emit("Pause");
