@@ -10,5 +10,5 @@ MediaKeys.GetSingleElementByXpath = function(path, docXPath)
 	else docElement = document;
 
 	//console.log("looking for " + path + " on " + document.URL);
-	return docElement.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+	return docElement.evaluate(path, docElement, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 };
