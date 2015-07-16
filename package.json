@@ -1,10 +1,14 @@
 {
   "name": "browsermediakeys",
   "title": "Media Keys",
-  "description": "Lets you control Youtube, Pandora, Bandcamp, TidalHiFi, and Google Play Music website media players using the media keys on your keyboard.",
-  "author": "Carlin Scott",
+  "description": "Lets you control many popular website media players using the media keys on your keyboard.",
+  "author": {
+    "name": "Carlin Scott",
+    "email": "carlin.q.scott@gmail.com"
+  },
+  "contributors": ["David Beitey"],
   "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
   "license": "MPL 2.0",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "icon": "icon.png"
 }
