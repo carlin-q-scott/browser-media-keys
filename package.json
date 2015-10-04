@@ -10,5 +10,12 @@
   "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
   "license": "MPL 2.0",
   "version": "0.6.1",
-  "icon": "icon.png"
+  "icon": "icon.png",
+  "preferences": [{
+        "name": "JamstashDomains",
+        "title": "Jamstash Domains",
+        "description": "Domains like jamstash.com own-jamstash.com (separated by simple space)",
+        "type": "string",
+        "value": "jamstash.com own-jamstash.com"
+    }]
 }
