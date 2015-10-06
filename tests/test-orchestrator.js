@@ -12,7 +12,7 @@ function OpenMediaWebsiteMock(pageDomain, done)
         done();
     });
 
-	tabs[0].url = data.url(pageDomain + ".html");
+	tabs[0].url = data.url("../tests/" + pageDomain + ".html");
 }
 
 exports["test play/pause on Pandora.com"] = function(assert, done)
