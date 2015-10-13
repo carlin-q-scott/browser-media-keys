@@ -2,3 +2,4 @@ Thumbs.db
 *.xpi
 icon.png
 .idea/
+node_modules
