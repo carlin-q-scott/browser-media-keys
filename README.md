@@ -1,4 +1,4 @@
-browser-media-keys
+browser-media-keys [![Linux Build Status](https://travis-ci.org/carlin-q-scott/browser-media-keys.svg?branch=master)](https://travis-ci.org/carlin-q-scott/browser-media-keys)
 ==================
 
 Lets you control Youtube, Pandora, Bandcamp, TidalHiFi and Google Play Music
