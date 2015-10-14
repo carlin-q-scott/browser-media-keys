@@ -3,3 +3,7 @@ node_js:
   - "stable"
 addons:
   firefox: "latest"
+
+before_script:
+  - "xvfb-run -a"
+  - "alias firefox=/usr/local/bin/firefox"

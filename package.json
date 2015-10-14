@@ -29,6 +29,6 @@
     "jpm": "*"
   },
   "scripts": {
-    "test": "jpm test -b /usr/local/bin/firefox -v"
+    "test": "jpm test -v"
   }
 }
