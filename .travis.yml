@@ -4,10 +4,10 @@ node_js:
 addons:
   firefox: "latest"
 
-before_script:
-  - "alias jpm='xvfb-run -a jpm'"
-  - "alias firefox=/usr/local/bin/firefox"
+env:
+  global:
+    - DISPLAY=:99.0
+    - JPM_FIREFOX_BINARY=$TRAVIS_BUILD_DIR/../firefox/firefox
 
-after_script:
-  - "unset jpm"
-  - "unset firefox"
+before_install:
+  - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16 -extension RANDR
