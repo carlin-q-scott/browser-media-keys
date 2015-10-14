@@ -5,5 +5,9 @@ addons:
   firefox: "latest"
 
 before_script:
-  - "xvfb-run -a"
+  - "alias jpm='xvfb-run -a jpm'"
   - "alias firefox=/usr/local/bin/firefox"
+
+after_script:
+  - "unset jpm"
+  - "unset firefox"
