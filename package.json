@@ -29,6 +29,6 @@
     "jpm": "*"
   },
   "scripts": {
-    "test": "jpm test -b -v"
+    "test": "jpm test -v"
   }
 }
