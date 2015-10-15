@@ -1,3 +1,6 @@
-thumbs.db
-tests
+Thumbs.db
+tests/*
 *.yml
+.*
+node_modules/*
+*.xpi
