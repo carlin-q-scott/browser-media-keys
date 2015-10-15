@@ -1,6 +1,6 @@
 var supportedPageDomains = [
     "pandora.com", "tidalhifi.com", "youtube.com", "bandcamp.com", "play.google.com",
-    "player.spotify.com", "soundcloud.com", "music.yandex.ru", "vk.com"
+    "play.spotify.com", "player.spotify.com", "soundcloud.com", "music.yandex.ru", "vk.com"
 ];
 var preferences = require("sdk/simple-prefs");
 var jamstashDomains = preferences.prefs.JamstashDomains.split(" ");

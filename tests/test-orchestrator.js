@@ -68,7 +68,7 @@ exports["test stop playing on TidalHiFi.com"] = function(assert, done)
     });
 };
 
-exports["test play/pause on Spotify.com"] = function(assert, done)
+exports["test play/pause on player.spotify.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("player.spotify.com", function(){
         TestMediaEvent("MediaPlayPause", "Pause", assert, function() {
@@ -77,23 +77,53 @@ exports["test play/pause on Spotify.com"] = function(assert, done)
     });
 };
 
-exports["test play next track on Spotify.com"] = function(assert, done)
+exports["test play next track on player.spotify.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("player.spotify.com", function() {
         TestMediaEvent("MediaTrackNext", "Next", assert, done);
     });
 };
 
-exports["test play previous track on Spotify.com"] = function(assert, done)
+exports["test play previous track on player.spotify.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("player.spotify.com", function() {
         TestMediaEvent("MediaTrackPrevious", "Previous", assert, done);
     });
 };
 
-exports["test stop playing on Spotify.com"] = function(assert, done)
+exports["test stop playing on player.spotify.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("player.spotify.com", function() {
+        TestMediaEvent("MediaStop", "Pause", assert, done);
+    });
+};
+
+exports["test play/pause on play.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("play.spotify.com", function(){
+        TestMediaEvent("MediaPlayPause", "Pause", assert, function() {
+            TestMediaEvent("MediaPlayPause", "Play", assert, done);
+        });
+    });
+};
+
+exports["test play next track on play.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("play.spotify.com", function() {
+        TestMediaEvent("MediaTrackNext", "Next", assert, done);
+    });
+};
+
+exports["test play previous track on play.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("play.spotify.com", function() {
+        TestMediaEvent("MediaTrackPrevious", "Previous", assert, done);
+    });
+};
+
+exports["test stop playing on play.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("play.spotify.com", function() {
         TestMediaEvent("MediaStop", "Pause", assert, done);
     });
 };
