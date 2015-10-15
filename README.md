@@ -1,4 +1,12 @@
-browser-media-keys [![Linux Build Status](https://travis-ci.org/carlin-q-scott/browser-media-keys.svg?branch=master)](https://travis-ci.org/carlin-q-scott/browser-media-keys)
+Build Status
+============
+
+| Linux | Windows |
+|-------|---------|
+| [![Linux Build Status](https://travis-ci.org/carlin-q-scott/browser-media-keys.svg?branch=master)](https://travis-ci.org/carlin-q-scott/browser-media-keys) | [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/carlin-q-scott/browser-media-keys)](https://ci.appveyor.com/project/carlin-q-scott/browser-media-keys) |
+
+
+Description
 ==================
 
 Lets you control Youtube, Pandora, Bandcamp, TidalHiFi and Google Play Music
