@@ -3,7 +3,7 @@
  */
 if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
-MediaKeys.playButton = "//sj-icon-button[@data-id='play-pause']";
-MediaKeys.pauseButton = "//sj-icon-button[@data-id='play-pause']";
-MediaKeys.skipButton = "//sj-icon-button[@data-id='forward']";
-MediaKeys.previousButton = "//sj-icon-button[@data-id='rewind']";
+MediaKeys.playButton = "//*[@data-id='play-pause'][1]";
+MediaKeys.pauseButton = "//*[@data-id='play-pause'][1]";
+MediaKeys.skipButton = "//*[@data-id='forward'][1]";
+MediaKeys.previousButton = "//*[@data-id='rewind'][1]";
