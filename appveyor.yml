@@ -8,7 +8,7 @@ install:
   - ps: Install-Product node $env:nodejs_version
   # install modules
   - npm install
-  - choco install firefox
+  - choco upgrade firefox
 
 # Post-install test scripts.
 test_script:
