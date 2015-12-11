@@ -1,6 +1,7 @@
 var tabs = require("sdk/tabs");
 var { viewFor } = require("sdk/view/core");
 var { data } = require("sdk/self");
+var { setTimeout } = require("sdk/timers");
 var pageWorker;
 
 function OpenMediaWebsiteMock(pageDomain, done)
@@ -9,7 +10,7 @@ function OpenMediaWebsiteMock(pageDomain, done)
         pageWorker = tab.attach({
             contentScriptFile: ["./Finder.js", "./" + pageDomain + "-view.js", "./orchestrator.js"]
         });
-        done();
+        setTimeout(done, 100);
     });
 
 	tabs[0].url = data.url("../tests/" + pageDomain + ".html");

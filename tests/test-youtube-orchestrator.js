@@ -1,6 +1,7 @@
 var tabs = require("sdk/tabs");
 var { viewFor } = require("sdk/view/core");
 var { data } = require("sdk/self");
+var { setTimeout } = require("sdk/timers");
 var pageWorker;
 
 function OpenMediaWebsiteMock(pageDomain, done)
@@ -12,7 +13,7 @@ function OpenMediaWebsiteMock(pageDomain, done)
                 pageScript: data.url("./youtube.com-orchestrator-pageScript.js")
             }
         });
-        done();
+        setTimeout(done, 100);
     });
 
     tabs[0].url = data.url("../tests/" + pageDomain + ".html");
