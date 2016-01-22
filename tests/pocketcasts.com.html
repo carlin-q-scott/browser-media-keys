@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pocketcasts</title>
+</head>
+<body>
+<h1 id='status'>Pause</h1>
+<div class='play_pause_button play_button' onclick='playPause()' id='playPauseButton'>Play</div>
+<script>
+function playPause()
+{
+    var playPauseButton = document.getElementById("playPauseButton");
+    var statusButton = document.getElementById("status");
+
+    if (playPauseButton.innerHTML === "Play")
+    {
+        playPauseButton.innerHTML = "Pause";
+        playPauseButton.setAttribute("class", "play_pause_button pause_button");
+        statusButton.innerHTML = "Play";
+    }
+    else
+    {
+        playPauseButton.innerHTML = "Play";
+        playPauseButton.setAttribute("class", "play_pause_button play_button");
+        statusButton.innerHTML = "Pause";
+    }
+}
+</script>
+</body>
+</html>

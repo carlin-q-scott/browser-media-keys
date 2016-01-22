@@ -129,6 +129,31 @@ exports["test stop playing on play.spotify.com"] = function(assert, done)
     });
 };
 
+exports["test play/pause button on pocketcasts.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("pocketcasts.com", function() {
+        TestMediaEvent("MediaPlayPause", "Play", assert, function() {
+            TestMediaEvent("MediaPlayPause", "Pause", assert, done);
+        });
+    });
+};
+
+exports["test start playing on pocketcasts.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("pocketcasts.com", function() {
+        TestMediaEvent("MediaPlay", "Play", assert, done);
+    });
+};
+
+exports["test start and then stop playing on pocketcasts.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("pocketcasts.com", function() {
+        TestMediaEvent("MediaPlay", "Play", assert, function() {
+            TestMediaEvent("MediaStop", "Pause", assert, done);
+        });
+    });
+};
+
 function TestMediaEvent(mediaEvent, mediaEventOutcome, assert, done)
 {
     pageWorker.port.once(mediaEventOutcome, function() {
