@@ -1,0 +1,62 @@
+[
+  {
+    "name": "youtube.com",
+    "include": "*.youtube.com",
+    "contentScriptFile": "./youtube.com-orchestrator.js",
+    "contentScriptOptions":{
+      "pageScriptFile": "./youtube.com-orchestrator-pageScript.js"
+    }
+  },
+  {
+    "name": "pandora.com",
+    "include": "*.pandora.com"
+  },
+  {
+    "name": "tidalhifi.com",
+    "include": "*.tidalhifi.com"
+  },
+  {
+    "name": "bandcamp.com",
+    "include": "*.bandcamp.com"
+  },
+  {
+    "name": "play.google.com",
+    "include": "*.play.google.com"
+  },
+  {
+    "name": "play.spotify.com",
+    "include": "*.play.spotify.com"
+  },
+  {
+    "name": "player.spotify.com",
+    "include": "*.player.spotify.com"
+  },
+  {
+    "name": "soundcloud.com",
+    "include": "*.soundcloud.com"
+  },
+  {
+    "name": "music.yandex.ru",
+    "include": "*.music.yandex.ru"
+  },
+  {
+    "name": "vk.com",
+    "include": "*.vk.com"
+  },
+  {
+    "name": "radio.yandex.ru",
+    "include": "*.radio.yandex.ru"
+  },
+  {
+    "name": "deezer.com",
+    "include": "*.deezer.com"
+  },
+  {
+    "name": "plex.tv",
+    "include": "@PlexDomains"
+  },
+  {
+    "name": "jamstash",
+    "include": "@JamstashDomains"
+  }
+]

@@ -11,13 +11,22 @@
   "license": "MPL-2.0",
   "version": "0.6.6",
   "icon": "icon.png",
-  "preferences": [{
+  "preferences": [
+    {
         "name": "JamstashDomains",
         "title": "Jamstash Domains",
         "description": "Domains like jamstash.com own-jamstash.com (separated by simple space)",
         "type": "string",
-        "value": "jamstash.com own-jamstash.com"
-  }],
+        "value": "jamstash.com"
+    },
+    {
+      "name": "PlexDomains",
+      "title": "Plex Domains",
+      "description": "Domains like 'plex.tv :32400' (separated by simple space)",
+      "type": "string",
+      "value": "plex.tv :32400"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/carlin-q-scott/browser-media-keys"

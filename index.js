@@ -1,17 +1,10 @@
-var supportedPageDomains = [
-    "pandora.com", "tidalhifi.com", "youtube.com", "bandcamp.com", "play.google.com",
-    "play.spotify.com", "player.spotify.com", "soundcloud.com", "music.yandex.ru", "vk.com",
-    "radio.yandex.ru", "deezer.com", "pocketcasts.com", "plex.tv", "localhost"
-];
 var preferences = require("sdk/simple-prefs");
-var jamstashDomains = preferences.prefs.JamstashDomains.split(" ");
-
 var hotkeyManager;
 
 //attach content scripts to appropriate websites
 exports.main = function (options, callbacks) {
     hotkeyManager = require("./lib/hotkeyManager");
-    hotkeyManager.RegisterContentScripts(supportedPageDomains, jamstashDomains);
+    hotkeyManager.RegisterContentScripts();
 };
 
 exports.onUnload = function (reason) {
@@ -19,11 +12,10 @@ exports.onUnload = function (reason) {
     hotkeyManager = null;
 };
 
-function onPrefChange(prefName) {
-    JamstashDomains = preferences.prefs.jamstashDomains.split(" ");
+function onPrefChange() { //re-register content scripts
     hotkeyManager.UnregisterHotkeys();
     hotkeyManager = require("./lib/hotkeyManager");
-    hotkeyManager.RegisterContentScripts(supportedPageDomains, jamstashDomains);
+    hotkeyManager.RegisterContentScripts();
 }
 
-preferences.on("JamstashDomains", onPrefChange);
+preferences.on("", onPrefChange);
