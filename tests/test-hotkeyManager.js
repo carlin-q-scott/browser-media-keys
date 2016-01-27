@@ -1,6 +1,8 @@
-var hkMan = require("hotkeyManager");
+var hotkeyManager = require("../lib/hotkeyManager");
+var { setTimeout } = require("sdk/timers");
 
-exports["disabled toggle play"] = function(assert, done)
+//exports["disabled toggle play"]
+var togglePlayTest = function(assert, done)
 {
 	var tabs = require("sdk/tabs");
 	var { data, test } = require("sdk/self");
@@ -19,6 +21,15 @@ exports["disabled toggle play"] = function(assert, done)
 			done();
 		}
 	});
+};
+
+exports["update property"] = function(assert, done)
+{
+	var preferences = require("sdk/simple-prefs");
+	hotkeyManager.RegisterContentScripts();
+    preferences.prefs["jamstashDomains"] = "cats and dogs";
+	assert.equal(preferences.prefs["jamstashDomains"], "cats and dogs");
+	setTimeout(done, 5000);
 };
 
 require("sdk/test").run(exports);
