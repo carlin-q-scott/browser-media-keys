@@ -15,16 +15,16 @@
     {
         "name": "JamstashDomains",
         "title": "Jamstash Domains",
-        "description": "Domains like jamstash.com own-jamstash.com (separated by simple space)",
+        "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
         "type": "string",
-        "value": "jamstash.com"
+        "value": "*.jamstash.com"
     },
     {
       "name": "PlexDomains",
       "title": "Plex Domains",
-      "description": "Domains like 'plex.tv :32400' (separated by simple space)",
+      "description": "Domains like '*.plex.tv http://127.0.0.1:32400/*' (separated by simple space)",
       "type": "string",
-      "value": "plex.tv :32400"
+      "value": "*.plex.tv http://127.0.0.1:32400/*"
     }
   ],
   "repository": {
