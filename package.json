@@ -1,10 +1,43 @@
 {
   "name": "browsermediakeys",
   "title": "Media Keys",
-  "description": "Lets you control Pandora.com and TidalHiFi.com music players using the media keys on your keyboard.",
-  "author": "Carlin Scott",
-  "id": "jid1-4GP7z3tkUd3Tzg",
-  "license": "MPL 2.0",
-  "version": "0.4",
-  "icon": "icon.png"
+  "description": "Lets you control many popular website media players using the media keys on your keyboard.",
+  "author": {
+    "name": "Carlin Scott",
+    "email": "carlin.q.scott@gmail.com"
+  },
+  "contributors": ["David Beitey"],
+  "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
+  "license": "MPL-2.0",
+  "version": "0.6.6",
+  "icon": "icon.png",
+  "preferences": [
+    {
+        "name": "JamstashDomains",
+        "title": "Jamstash Domains",
+        "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
+        "type": "string",
+        "value": "*.jamstash.com"
+    },
+    {
+      "name": "PlexDomains",
+      "title": "Plex Domains",
+      "description": "Domains like '*.plex.tv http://127.0.0.1:32400/*' (separated by simple space)",
+      "type": "string",
+      "value": "*.plex.tv http://127.0.0.1:32400/*"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlin-q-scott/browser-media-keys"
+  },
+  "bugs": {
+    "url": "https://github.com/carlin-q-scott/browser-media-keys/issues"
+  },
+  "devDependencies": {
+    "jpm": "*"
+  },
+  "scripts": {
+    "test": "jpm test -v"
+  }
 }

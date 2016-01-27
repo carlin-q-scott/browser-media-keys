@@ -1,6 +1,6 @@
 exports["test initialize hotkeys"] = function(assert)
 {
-	require("main.js");
+	require("../index");
 	assert.pass("hotkeys initialized");
 };
 
@@ -23,6 +23,6 @@ exports["disabled toggle play"] = function(assert, done)
 			done();
 		}
 	});
-}
+};
 
 require("sdk/test").run(exports);

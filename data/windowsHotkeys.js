@@ -1,6 +1,29 @@
 /* import js-ctypes */
 var hotkeyListenerIntervalId;
 var win32Api;
+var activeWindow = null;
+
+const HWND = ctypes.voidptr_t;
+
+const PM_REMOVE = 0x0001;
+
+const WM_KEYFIRST = 0x0100;
+const WM_KEYLAST = 0x0109;
+const WM_HOTKEY = 0x0312;
+
+const VK_MEDIA_NEXT_TRACK = 0xB0;
+const VK_MEDIA_PREV_TRACK = 0xB1;
+const VK_MEDIA_STOP = 0xB2;
+const VK_MEDIA_PLAY_PAUSE = 0xB3;
+
+const MOD_NONE = 0x0000;
+
+const hotkeys = [
+    VK_MEDIA_NEXT_TRACK,
+    VK_MEDIA_PREV_TRACK,
+    VK_MEDIA_STOP,
+    VK_MEDIA_PLAY_PAUSE
+];
 
 onmessage = function(event)
 {
@@ -13,13 +36,12 @@ onmessage = function(event)
 			DetachEventListeners();
 			break;
 	}
-}
+};
 
 var AttachEventListeners = function()
 {
 	//possible race condition if win32Api is not null
 	win32Api = ctypes.open("user32.dll");
-	var HWND = ctypes.voidptr_t;
 	var RegisterHotKey = win32Api.declare
 	(
 		"RegisterHotKey",
@@ -66,30 +88,14 @@ var AttachEventListeners = function()
 		ctypes.uint32_t,
 		ctypes.uint32_t
 	);
-	
-	var PM_REMOVE = 0x0001;
-	
-	var WM_KEYFIRST = 0x0100;
-	var WM_KEYLAST = 0x0109;
-	var WM_HOTKEY = 0x0312;
-	
-	var VK_MEDIA_NEXT_TRACK = 0xB0;
-	var VK_MEDIA_PREV_TRACK = 0xB1;
-	var VK_MEDIA_STOP = 0xB2;
-	var VK_MEDIA_PLAY_PAUSE = 0xB3;
-	
-	var MOD_NONE = 0x0000;
-	
-	var activeWindow = null;
-	var hotkeys = [
-		VK_MEDIA_NEXT_TRACK,
-		VK_MEDIA_PREV_TRACK,
-		VK_MEDIA_STOP,
-		VK_MEDIA_PLAY_PAUSE
-	];
 	for(let hotkey of hotkeys)
 	{
-		if(!RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)) console.log("Failed to register hotkey");
+		if(!RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)){
+			console.log("Failed to register hotkey: " + hotkey);
+			postMessage("attach failed");
+			DetachEventListeners();
+			return;
+		}
 	}
 	
 	var msg = new MSG;
@@ -99,11 +105,11 @@ var AttachEventListeners = function()
 		{
 			if (msg.wParam == VK_MEDIA_NEXT_TRACK)
 			{
-				postMessage("MediaNextTrack");			
+				postMessage("MediaTrackNext");
 			}
 			else if (msg.wParam == VK_MEDIA_PREV_TRACK)
 			{
-				postMessage("MediaPreviousTrack");			
+				postMessage("MediaTrackPrevious");
 			}
 			else if (msg.wParam == VK_MEDIA_STOP)
 			{
@@ -115,11 +121,30 @@ var AttachEventListeners = function()
 			}
 		}
 	}, 200);
-}
+};
 
 var DetachEventListeners = function()
 {
+    unRegisterHotkeys();
 	clearInterval(hotkeyListenerIntervalId);
 	win32Api.close();
-	win32Api = null;
+    win32Api = null;
+    console.log("closed win32 API");
+};
+
+function unRegisterHotkeys(){
+    var UnregisterHotKey = win32Api.declare
+    (
+        "UnregisterHotKey",
+        ctypes.winapi_abi,
+        ctypes.bool,
+        HWND,
+        ctypes.int32_t
+    );
+
+    //unregister hotkeys
+    for(let hotkey of hotkeys)
+    {
+        if(!UnregisterHotKey(activeWindow, hotkey)) console.log("Failed to unregister hotkey: " + hotkey);
+    }
 }

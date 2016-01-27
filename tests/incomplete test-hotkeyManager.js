@@ -19,6 +19,6 @@ exports["disabled toggle play"] = function(assert, done)
 			done();
 		}
 	});
-}
+};
 
 require("sdk/test").run(exports);

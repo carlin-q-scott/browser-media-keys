@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tidal HiFi</title>
+</head>
 <body>
-<h1 id='status'>playing</h1>
+<h1 id='status'>Play</h1>
 <button data-test-id='play' style='display: none;' onclick='play()' id='playButton'>Play</button>
 <button data-test-id='pause' style='' onclick='pause()' id='pauseButton'>Pause</button>
 <button data-test-id='next' onclick='nextTrack()'>Next Track</button>
@@ -14,24 +18,24 @@ function play()
 {
 	pauseButton.style = "";
 	playButton.style = "display: none";
-	document.getElementById("status").innerHTML = "playing";
+	document.getElementById("status").innerHTML = "Play";
 }
 
 function pause()
 {
 	playButton.style = "";
 	pauseButton.style = "display: none";
-	document.getElementById("status").innerHTML = "paused";
+	document.getElementById("status").innerHTML = "Pause";
 }
 
 function nextTrack()
 {
-	document.getElementById("status").innerHTML = "next track";
+	document.getElementById("status").innerHTML = "Next";
 }
 
 function previousTrack()
 {
-	document.getElementById("status").innerHTML = "previous track";
+	document.getElementById("status").innerHTML = "Previous";
 }	
 </script>
 </body>
