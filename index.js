@@ -1,13 +1,21 @@
-var supportedPageDomains = ["pandora.com", "tidalhifi.com", "youtube.com", "bandcamp.com", "play.google.com", "player.spotify.com", "soundcloud.com"];
+var preferences = require("sdk/simple-prefs");
 var hotkeyManager;
 
 //attach content scripts to appropriate websites
 exports.main = function (options, callbacks) {
     hotkeyManager = require("./lib/hotkeyManager");
-    hotkeyManager.RegisterContentScripts(supportedPageDomains);
+    hotkeyManager.RegisterContentScripts();
 };
 
 exports.onUnload = function (reason) {
     hotkeyManager.UnregisterHotkeys();
     hotkeyManager = null;
 };
+
+function onPrefChange() { //re-register content scripts
+    hotkeyManager.UnregisterHotkeys();
+    hotkeyManager = require("./lib/hotkeyManager");
+    hotkeyManager.RegisterContentScripts();
+}
+
+preferences.on("", onPrefChange);

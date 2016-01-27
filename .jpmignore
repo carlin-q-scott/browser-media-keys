@@ -1,0 +1,6 @@
+Thumbs.db
+tests/*
+*.yml
+.*
+node_modules/*
+*.xpi
