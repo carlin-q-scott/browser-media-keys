@@ -4,15 +4,14 @@ var { data } = require("sdk/self");
 var { setTimeout } = require("sdk/timers");
 var pageWorker;
 
+var youtubePageWorkerSpec = JSON.parse(data.load("pageMods.json"))[0];
+youtubePageWorkerSpec.contentScriptOptions.pageScriptFile = data.url(youtubePageWorkerSpec.contentScriptOptions.pageScriptFile);
+
 function OpenMediaWebsiteMock(pageDomain, done)
 {
+
     tabs.once('ready', function(tab) {
-        pageWorker = tab.attach({
-            contentScriptFile: "./youtube.com-orchestrator.js",
-            contentScriptOptions: {
-                pageScript: data.url("./youtube.com-orchestrator-pageScript.js")
-            }
-        });
+        pageWorker = tab.attach(youtubePageWorkerSpec);
         setTimeout(done, 100);
     });
 

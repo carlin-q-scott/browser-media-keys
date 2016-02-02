@@ -25,7 +25,7 @@ MediaKeys.Init = function()
 
         var attachPageScript = function () {
             pageScript.id = "media-keys";
-            pageScript.src = self.options.pageScript;
+            pageScript.src = self.options.pageScriptFile;
             document.body.appendChild(pageScript);
         };
         attachPageScript();
