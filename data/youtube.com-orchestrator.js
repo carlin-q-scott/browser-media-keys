@@ -12,7 +12,7 @@ MediaKeys.Init = function()
         console.log(`attempting to find youtube player. ${maxPlayerLoadTime} millis remaining...`)
         maxPlayerLoadTime -= checkForPlayerInteval;
         if (maxPlayerLoadTime == 0 ) clearInterval(intervalId);
-        if (! unsafeWindow.document.getElementById("movie_player")) //no youtube player
+        if (! window.document.getElementById("movie_player")) //no youtube player
         {
             console.log("didn't find youtube player");
             self.port.emit("detach");
