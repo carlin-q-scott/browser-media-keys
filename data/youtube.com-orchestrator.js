@@ -18,7 +18,7 @@ MediaKeys.Init = function()
             self.port.emit("detach");
             return;
         }
-        if (! window.document.getElementById("movie_player")) return; //because there's no youtube player
+        if (! window.document.querySelector('div.html5-video-player')) return; //because there's no youtube player
         clearInterval(intervalId);
 
         var pageDomain = window.location.origin;
