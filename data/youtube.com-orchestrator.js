@@ -11,13 +11,14 @@ MediaKeys.Init = function()
     var attemptToAttachPageScript = function() {
         console.log(`attempting to find youtube player. ${maxPlayerLoadTime} millis remaining...`)
         maxPlayerLoadTime -= checkForPlayerInteval;
-        if (maxPlayerLoadTime == 0 ) clearInterval(intervalId);
-        if (! window.document.getElementById("movie_player")) //no youtube player
+        if (maxPlayerLoadTime == 0 )
         {
             console.log("didn't find youtube player");
+            clearInterval(intervalId);
             self.port.emit("detach");
             return;
         }
+        if (! window.document.getElementById("movie_player")) return; //because there's no youtube player
         clearInterval(intervalId);
 
         var pageDomain = window.location.origin;
