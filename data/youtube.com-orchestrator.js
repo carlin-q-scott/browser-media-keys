@@ -9,7 +9,7 @@ MediaKeys.Init = function()
     var checkForPlayerInteval = 250;
 
     var attemptToAttachPageScript = function() {
-        console.log(`attempting to find youtube player. ${maxPlayerLoadTime} millis remaining...`)
+        //console.log(`attempting to find youtube player. ${maxPlayerLoadTime} millis remaining...`)
         maxPlayerLoadTime -= checkForPlayerInteval;
         if (maxPlayerLoadTime == 0 )
         {
@@ -57,7 +57,7 @@ MediaKeys.Init = function()
         });
 
         self.port.on("detach", function () {
-            if (document.body && document.body.contains(pageScript)) document.body.removeChild(pageScript);
+            if (document.body !== undefined && document.body.contains(pageScript)) document.body.removeChild(pageScript);
             self.port.emit("detach");
         });
     };
