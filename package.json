@@ -38,6 +38,8 @@
     "jpm": "*"
   },
   "scripts": {
-    "test": "jpm test -v"
+    "test": "jpm test -v",
+    "youtube": "jpm run --binary-args https://www.youtube.com/watch?v=hKitZEncwro",
+    "debug": "jpm run --debug"
   }
 }

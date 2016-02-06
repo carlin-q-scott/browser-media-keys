@@ -4,6 +4,7 @@
 if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
 MediaKeys.init = function() {
+    var player = document.querySelector('div.html5-video-player');
     var pageDomain = window.location.origin;
     var PlayerStates = {
         unstarted: -1,
@@ -12,18 +13,17 @@ MediaKeys.init = function() {
         paused: 2
     };
     var playVideo = function () {
-        document.getElementById("movie_player").playVideo();
+        player.playVideo();
         window.postMessage("Play", pageDomain);
     };
     var pauseVideo = function () {
-        document.getElementById("movie_player").pauseVideo();
+        player.pauseVideo();
         window.postMessage("Pause", pageDomain);
     };
 
     window.addEventListener("message", function (event) {
         switch (event.data) {
             case "MediaPlayPause":
-                var player = document.getElementById("movie_player");
                 var status = player.getPlayerState();
                 if (status != PlayerStates.playing) {
                     playVideo();
@@ -42,17 +42,17 @@ MediaKeys.init = function() {
                 break;
 
             case "MediaTrackNext":
-                document.getElementById("movie_player").nextVideo();
+                player.nextVideo();
                 window.postMessage("Next", pageDomain);
                 break;
 
             case "MediaTrackPrevious":
-                document.getElementById("movie_player").previousVideo();
+                player.previousVideo();
                 window.postMessage("Previous", pageDomain);
                 break;
 
             case "MediaStop":
-                document.getElementById("movie_player").stopVideo();
+                player.stopVideo();
                 window.postMessage("Stop", pageDomain);
                 break;
         }

@@ -5,7 +5,8 @@
     "contentScriptFile": "./youtube.com-orchestrator.js",
     "contentScriptOptions":{
       "pageScriptFile": "./youtube.com-orchestrator-pageScript.js"
-    }
+    },
+    "attachTo": ["top", "frame", "existing"]
   },
   {
     "name": "pandora.com",
