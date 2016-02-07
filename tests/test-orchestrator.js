@@ -35,7 +35,7 @@ exports["test skip track on Pandora.com"] = function(assert, done)
 exports["test stop playing on Pandora.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("pandora.com", function() {
-        TestMediaEvent("MediaStop", "Pause", assert, done);
+        TestMediaEvent("MediaStop", "Stop", assert, done);
     });
 };
 
@@ -65,7 +65,7 @@ exports["test play previous track on TidalHiFi.com"] = function(assert, done)
 exports["test stop playing on TidalHiFi.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("tidalhifi.com", function() {
-        TestMediaEvent("MediaStop", "Pause", assert, done);
+        TestMediaEvent("MediaStop", "Stop", assert, done);
     });
 };
 
@@ -95,7 +95,7 @@ exports["test play previous track on player.spotify.com"] = function(assert, don
 exports["test stop playing on player.spotify.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("player.spotify.com", function() {
-        TestMediaEvent("MediaStop", "Pause", assert, done);
+        TestMediaEvent("MediaStop", "Stop", assert, done);
     });
 };
 
@@ -125,7 +125,7 @@ exports["test play previous track on play.spotify.com"] = function(assert, done)
 exports["test stop playing on play.spotify.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("play.spotify.com", function() {
-        TestMediaEvent("MediaStop", "Pause", assert, done);
+        TestMediaEvent("MediaStop", "Stop", assert, done);
     });
 };
 
@@ -149,7 +149,7 @@ exports["test start and then stop playing on pocketcasts.com"] = function(assert
 {
     OpenMediaWebsiteMock("pocketcasts.com", function() {
         TestMediaEvent("MediaPlay", "Play", assert, function() {
-            TestMediaEvent("MediaStop", "Pause", assert, done);
+            TestMediaEvent("MediaStop", "Stop", assert, done);
         });
     });
 };

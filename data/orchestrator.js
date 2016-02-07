@@ -53,7 +53,7 @@ MediaKeys.Init = function()
 	});
 
 	self.port.on("MediaStop", function(){
-		var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton);
+		var pauseButton = MediaKeys.GetSingleElementByXpath(MediaKeys.pauseButton, MediaKeys.basePlayer);
 		if (pauseButton == null) return;
 		pauseButton.click();
 		self.port.emit("Stop");

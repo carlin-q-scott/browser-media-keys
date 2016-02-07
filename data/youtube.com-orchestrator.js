@@ -11,14 +11,13 @@ MediaKeys.Init = function()
     var attemptToAttachPageScript = function() {
         //console.log(`attempting to find youtube player. ${maxPlayerLoadTime} millis remaining...`)
         maxPlayerLoadTime -= checkForPlayerInteval;
-        if (maxPlayerLoadTime == 0 )
-        {
+        if (maxPlayerLoadTime == 0) {
             console.log("didn't find youtube player");
             clearInterval(intervalId);
             self.port.emit("detach");
             return;
         }
-        if (! window.document.querySelector('div.html5-video-player')) return; //because there's no youtube player
+        if (!window.document.querySelector('div.html5-video-player')) return; //because there's no youtube player
         clearInterval(intervalId);
 
         var pageDomain = window.location.origin;
@@ -60,26 +59,25 @@ MediaKeys.Init = function()
             if (document.body !== undefined && document.body.contains(pageScript)) document.body.removeChild(pageScript);
             self.port.emit("detach");
         });
-	
-	//automatically pause other players while playing a video and resume them when done
-	var latestState;
-	window.setInterval(function(){
-		var state = playerElement().getPlayerState();
-		if (state != latestState)
-		{
-			latestState = state;
-			switch(state)
-			{
-				case PlayerStates.playing:
-					self.port.emit("Broadcast", "MediaPause");
-					break;
-				case PlayerStates.ended:
-					self.port.emit("Broadcast", "MediaPlay");
-					break;
-			}
-		}
-	}, 1500);
-	
+
+        //automatically pause other players while playing a video and resume them when done
+        var latestState;
+        window.setInterval(function () {
+            var state = playerElement().getPlayerState();
+            if (state != latestState) {
+                latestState = state;
+                switch (state) {
+                    case PlayerStates.playing:
+                        self.port.emit("Broadcast", "MediaPause");
+                        break;
+                    case PlayerStates.ended:
+                        self.port.emit("Broadcast", "MediaPlay");
+                        break;
+                }
+            }
+        }, 1500);
+    };
+
 	var intervalId = setInterval(attemptToAttachPageScript, checkForPlayerInteval);
 	attemptToAttachPageScript();
 };
