@@ -92,9 +92,8 @@ var AttachEventListeners = function()
 	{
 		if(!RegisterHotKey(activeWindow, hotkey, MOD_NONE, hotkey)){
 			console.log("Failed to register hotkey: " + hotkey);
-			postMessage("attach failed");
 			DetachEventListeners();
-			return;
+			throw "attach failed";
 		}
 	}
 	
