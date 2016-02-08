@@ -3,3 +3,4 @@ Thumbs.db
 icon.png
 .idea/
 node_modules
+*.log

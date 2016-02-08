@@ -36,6 +36,7 @@
         moviePlayer.getPlayerState = function(){
             var state = document.getElementById("status").innerHTML;
             switch (state){
+                case "Stop": return 0;
                 case "Play": return 1;
                 case "Pause": return 2;
             }

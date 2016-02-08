@@ -1,21 +1,19 @@
 var preferences = require("sdk/simple-prefs");
-var hotkeyManager;
+var hotkeyManager = require("./lib/hotkeyManager");
+var pageWorkerManager = require("./lib/pageWorkerManager");
 
 //attach content scripts to appropriate websites
 exports.main = function (options, callbacks) {
-    hotkeyManager = require("./lib/hotkeyManager");
-    hotkeyManager.RegisterContentScripts();
+    pageWorkerManager.RegisterContentScripts();
 };
 
 exports.onUnload = function (reason) {
     hotkeyManager.UnregisterHotkeys();
-    hotkeyManager = null;
 };
 
 function onPrefChange() { //re-register content scripts
     hotkeyManager.UnregisterHotkeys();
-    hotkeyManager = require("./lib/hotkeyManager");
-    hotkeyManager.RegisterContentScripts();
+    pageWorkerManager.RegisterContentScripts();
 }
 
 preferences.on("", onPrefChange);

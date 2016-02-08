@@ -14,11 +14,9 @@ MediaKeys.init = function() {
     };
     var playVideo = function () {
         player.playVideo();
-        window.postMessage("Play", pageDomain);
     };
     var pauseVideo = function () {
         player.pauseVideo();
-        window.postMessage("Pause", pageDomain);
     };
 
     window.addEventListener("message", function (event) {
@@ -53,10 +51,30 @@ MediaKeys.init = function() {
 
             case "MediaStop":
                 player.stopVideo();
-                window.postMessage("Stop", pageDomain);
                 break;
         }
     });
+
+    //automatically pause other players while playing a video and resume them when done
+    var latestState;
+    window.setInterval(function () {
+        var state = player.getPlayerState();
+        if (state != latestState) {
+            console.log(`youtube player state transitioned from ${latestState} to ${state}`);
+            latestState = state;
+            switch (state) {
+                case PlayerStates.playing:
+                    window.postMessage("Play", pageDomain);
+                    break;
+                case PlayerStates.paused:
+                    window.postMessage("Pause", pageDomain);
+                    break;
+                case PlayerStates.ended:
+                    window.postMessage("Stop", pageDomain);
+                    break;
+            }
+        }
+    }, 1500);
 };
 
 MediaKeys.init();

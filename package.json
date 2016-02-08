@@ -39,6 +39,7 @@
   },
   "scripts": {
     "test": "jpm test -v",
+    "pandora": "jpm run --binary-args http://www.pandora.com/station/play/3016210680439329380",
     "youtube": "jpm run --binary-args https://www.youtube.com/watch?v=hKitZEncwro",
     "debug": "jpm run --debug"
   }

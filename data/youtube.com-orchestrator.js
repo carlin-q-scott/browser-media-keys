@@ -52,6 +52,7 @@ MediaKeys.Init = function()
         });
 
         window.addEventListener("message", function (event) {
+            console.log(event.data);
             self.port.emit(event.data);
         });
 
@@ -59,23 +60,6 @@ MediaKeys.Init = function()
             if (document.body !== undefined && document.body.contains(pageScript)) document.body.removeChild(pageScript);
             self.port.emit("detach");
         });
-
-        //automatically pause other players while playing a video and resume them when done
-        var latestState;
-        window.setInterval(function () {
-            var state = playerElement().getPlayerState();
-            if (state != latestState) {
-                latestState = state;
-                switch (state) {
-                    case PlayerStates.playing:
-                        self.port.emit("Broadcast", "MediaPause");
-                        break;
-                    case PlayerStates.ended:
-                        self.port.emit("Broadcast", "MediaPlay");
-                        break;
-                }
-            }
-        }, 1500);
     };
 
 	var intervalId = setInterval(attemptToAttachPageScript, checkForPlayerInteval);
