@@ -1,14 +1,29 @@
 if (require("sdk/system").platform == "winnt") {
-	exports["test register/de-register hotkeys"] = function (assert) {
-		var {Cu} = require("chrome");
-		var {ChromeWorker} = Cu.import("resource://gre/modules/Services.jsm", null);
-		var hotkeyWorker = new ChromeWorker(require("sdk/self").data.url("../lib/mk-win.js"));
+	var { setTimeout } = require("sdk/timers");
+	var tabs = require("sdk/tabs");
+	tabs[0].url = "about:blank";
 
-		hotkeyWorker.postMessage("attach");
-		assert.pass("successfully registered hotkeys");
-		//Todo: something to test that the hotkeys are registered
-		hotkeyWorker.postMessage("detach");
-		assert.pass("successfully de-registered hotkeys");
+	exports["test register/de-register hotkeys"] = function (assert, done) {
+		let hotkeyWorker = require("../lib/mk-win.js");
+		//hotkeyWorker.addEventListener();
+
+		new Promise(function(resolve,reject){
+			//hotkeyWorker.onerror = reject;
+			hotkeyWorker.postMessage("attach");
+			setTimeout(resolve, 500);
+		}).then(function (resolve, reject) {
+			//hotkeyWorker.onerror = reject;
+			assert.pass("successfully registered hotkeys");
+			//Todo: something to test that the hotkeys are registered
+			hotkeyWorker.postMessage("detach");
+			setTimeout(resolve, 500);
+		}).then(function(resolve,reject){
+			assert.pass("successfully de-registered hotkeys");
+			done();
+		}).catch(function(error){
+			assert.fail(error);
+			done();
+		})
 	};
 
 	require("sdk/test").run(exports);
