@@ -2,7 +2,7 @@ if (require("sdk/system").platform == "winnt") {
 	exports["test register/de-register hotkeys"] = function (assert) {
 		var {Cu} = require("chrome");
 		var {ChromeWorker} = Cu.import("resource://gre/modules/Services.jsm", null);
-		var hotkeyWorker = new ChromeWorker(require("sdk/self").data.url("../lib/windowsHotkeys.js"));
+		var hotkeyWorker = new ChromeWorker(require("sdk/self").data.url("../lib/mk-win.js"));
 
 		hotkeyWorker.postMessage("attach");
 		assert.pass("successfully registered hotkeys");
