@@ -8,11 +8,11 @@ if (require("sdk/system").platform == "winnt") {
 		//hotkeyWorker.addEventListener();
 
 		new Promise(function(resolve,reject){
-			//hotkeyWorker.onerror = reject;
+			hotkeyWorker.onerror = reject;
 			hotkeyWorker.postMessage("attach");
 			setTimeout(resolve, 500);
 		}).then(function (resolve, reject) {
-			//hotkeyWorker.onerror = reject;
+			hotkeyWorker.onerror = reject;
 			assert.pass("successfully registered hotkeys");
 			//Todo: something to test that the hotkeys are registered
 			hotkeyWorker.postMessage("detach");
