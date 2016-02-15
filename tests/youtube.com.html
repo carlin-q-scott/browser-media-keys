@@ -6,7 +6,9 @@
 </head>
 <body>
     <h1 id='status'>Play</h1>
-    <div id='movie_player' class='html5-video-player'> </div>
+    <div id='movie_player' class='html5-video-player'>
+        <video/>
+    </div>
     <script>
         var moviePlayer = document.getElementById("movie_player");
         moviePlayer.playVideo = function()
@@ -40,7 +42,17 @@
                 case "Play": return 1;
                 case "Pause": return 2;
             }
-        }
+        };
+
+        let video = document.querySelector("video");
+        video.play = moviePlayer.playVideo;
+        video.pause = moviePlayer.pauseVideo;
+        Object.defineProperty(video, "paused", { get: function(){
+            return moviePlayer.getPlayerState() == 2;
+        }});
+        Object.defineProperty(video, "ended", { get: function(){
+            return moviePlayer.getPlayerState() == 0;
+        }});
     </script>
 </body>
 </html>
