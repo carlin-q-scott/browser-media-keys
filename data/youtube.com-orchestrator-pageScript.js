@@ -7,12 +7,7 @@ MediaKeys.init = function() {
     let player = document.querySelector('div.html5-video-player');
     let video = document.querySelector('video');
     let pageDomain = window.location.origin;
-    let PlayerStates = {
-        unstarted: -1,
-        ended: 0,
-        playing: 1,
-        paused: 2
-    };
+
     let playVideo = function () {
         video.play();
     };
@@ -23,7 +18,7 @@ MediaKeys.init = function() {
     window.addEventListener("message", function (event) {
         switch (event.data) {
             case "MediaPlayPause":
-                if (player.paused) {
+                if (video.paused) {
                     playVideo();
                 }
                 else {
