@@ -25,6 +25,13 @@
       "description": "Domains like '*.plex.tv http://127.0.0.1:32400/*' (separated by simple space)",
       "type": "string",
       "value": "*.plex.tv http://127.0.0.1:32400/*"
+    },
+    {
+      "name": "SubsonicDomains",
+      "title": "Subsonic Domains",
+      "description": "Domains like '*.demo.subsonic.org' (separated by simple space)",
+      "type": "string",
+      "value": "*.demo.subsonic.org"
     }
   ],
   "repository": {
