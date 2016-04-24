@@ -13,6 +13,13 @@
   "icon": "icon.png",
   "preferences": [
     {
+      "name": "UseMkWin",
+      "title": "Windows alternative key support",
+      "description": "Some Windows keyboard software blocks hotkeys. This option may fix this issue.",
+      "type": "bool",
+      "value": false
+    },
+    {
         "name": "JamstashDomains",
         "title": "Jamstash Domains",
         "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
