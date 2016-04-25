@@ -53,6 +53,10 @@
     "include": "*.deezer.com"
   },
   {
+    "name": "overcast.fm",
+    "include": "*.overcast.fm"
+  },
+  {
     "name": "plex.tv",
     "include": "@PlexDomains"
   },
