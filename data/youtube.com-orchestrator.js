@@ -61,7 +61,7 @@ MediaKeys.Init = function()
                 document.body.removeChild(pageScript);
             }
             catch (exception) {
-                console.log("cannot detach youtube page script because page is closed or otherwise innaccessible.");
+                //console.log("cannot detach youtube page script because page is closed or otherwise innaccessible.");
             }
             self.port.emit("detach");
         });
