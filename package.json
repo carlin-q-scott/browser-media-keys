@@ -20,6 +20,13 @@
       "value": false
     },
     {
+      "name": "Autoplay",
+      "title": "Automatically play/pause media",
+      "description": "Actively playing media is paused when starting another media player and resumed once that one stops playing",
+      "type": "bool",
+      "value": false
+    },
+    {
         "name": "JamstashDomains",
         "title": "Jamstash Domains",
         "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
