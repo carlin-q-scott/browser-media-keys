@@ -13,6 +13,7 @@ exports.onUnload = function (reason) {
 
 function onPrefChange() { //re-register content scripts
     hotkeyManager.UnregisterHotkeys();
+    pageWorkerManager.Destroy();
     pageWorkerManager.RegisterContentScripts();
 }
 
