@@ -24,7 +24,7 @@
       "title": "Automatically play/pause media",
       "description": "Actively playing media is paused when starting another media player and resumed once that one stops playing",
       "type": "bool",
-      "value": false
+      "value": true
     },
     {
         "name": "JamstashDomains",
