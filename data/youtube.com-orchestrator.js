@@ -5,7 +5,7 @@ if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
 MediaKeys.Init = function()
 {
-    var maxPlayerLoadTime = 3000;
+    var maxPlayerLoadTime = 1500;
     var checkForPlayerInteval = 250;
 
     var attemptToAttachPageScript = function() {
@@ -14,7 +14,7 @@ MediaKeys.Init = function()
         if (maxPlayerLoadTime == 0) {
             console.log("didn't find youtube player");
             clearInterval(intervalId);
-            self.port.emit("detach");
+            self.port.emit("self-destruct");
             return;
         }
         if (!window.document.querySelector('div.html5-video-player')) return; //because there's no youtube player
@@ -66,7 +66,6 @@ MediaKeys.Init = function()
             catch (exception) {
                 //console.log("cannot detach youtube page script because page is closed or otherwise innaccessible.");
             }
-            self.port.emit("detach");
         });
     };
 
