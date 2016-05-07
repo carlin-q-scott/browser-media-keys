@@ -6,10 +6,12 @@
     "name": "Carlin Scott",
     "email": "carlin.q.scott@gmail.com"
   },
-  "contributors": ["David Beitey"],
+  "contributors": [
+    "David Beitey <david@davidjb.com>"
+  ],
   "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
   "license": "MPL-2.0",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "icon": "icon.png",
   "preferences": [
     {
