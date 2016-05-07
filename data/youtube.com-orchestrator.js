@@ -51,13 +51,16 @@ MediaKeys.Init = function()
             window.postMessage("MediaStop", pageDomain)
         });
 
-        window.addEventListener("message", function (event) {
-            console.log(event.data);
-            self.port.emit(event.data);
-        });
+        function messageRelay(message)
+        {
+            //console.log(event.data);
+            self.port.emit(message.data);            
+        }
+        window.addEventListener("message", messageRelay);
 
         self.port.on("detach", function () {
             try {
+                window.removeEventListener("message", messageRelay)
                 document.body.removeChild(pageScript);
             }
             catch (exception) {
