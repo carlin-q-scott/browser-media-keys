@@ -74,13 +74,13 @@ exports["test detach"] = function(assert, done)
                 assert.ok(mediaKeysPresent, "page script successfully added");
             });
         pageWorker.port.emit("detach");
-        pageWorker.port.once("detach", function() {
+        setTimeout(function() {
             tabs.activeTab.attach(checkForMediaKeys)
             .port.once("mediaKeysPresent", function(mediaKeysPresent){
                 assert.ok(!mediaKeysPresent, "page script successfully removed");
                 done();
             });
-        });
+        }, 150);
     });
 }
 
