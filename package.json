@@ -50,6 +50,9 @@
       "value": "*.demo.subsonic.org"
     }
   ],
+  "permissions": {
+    "private-browsing": true
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/carlin-q-scott/browser-media-keys"
