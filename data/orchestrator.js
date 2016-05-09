@@ -71,10 +71,13 @@ MediaKeys.Init = function()
 			}
 			
 			var currentTrackObservable;
+			//setTimeout
 			if (MediaKeys.trackInfoContainer) 
 				currentTrackObservable = MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfoContainer, MediaKeys.basePlayer);
 			else 
 				currentTrackObservable = MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfo, MediaKeys.basePlayer);
+
+			if (currentTrackObservable) //clear timer and finish setup
 
 			var currentTrackObserver = new MutationObserver(notifyNewTrack);
 			currentTrackObserver.observe(currentTrackObservable, {

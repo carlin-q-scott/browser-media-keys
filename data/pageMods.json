@@ -71,5 +71,9 @@
   {
     "name": "subsonic",
     "include": "@SubsonicDomains"
+  },
+  {
+    "name": "music.amazon",
+    "include": ["*.music.amazon.com", "*.music.amazon.de"]
   }
 ]
