@@ -29,11 +29,11 @@
       "value": true
     },
     {
-        "name": "JamstashDomains",
-        "title": "Jamstash Domains",
-        "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
-        "type": "string",
-        "value": "*.jamstash.com"
+      "name": "JamstashDomains",
+      "title": "Jamstash Domains",
+      "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
+      "type": "string",
+      "value": "*.jamstash.com"
     },
     {
       "name": "PlexDomains",
@@ -61,6 +61,7 @@
     "url": "https://github.com/carlin-q-scott/browser-media-keys/issues"
   },
   "devDependencies": {
+    "eslint": "^2.9.0",
     "jpm": "*"
   },
   "scripts": {
