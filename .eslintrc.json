@@ -11,7 +11,7 @@
     "rules": {
         "indent": [
             "warn",
-            "tab",
+            4,
             { "SwitchCase": 1 }
         ],
         "linebreak-style": [
@@ -20,12 +20,17 @@
         ],
         "quotes": [
             "warn",
-            "single"
+            "double"
         ],
         "semi": [
             "warn",
             "always"
         ],
-        "no-console": [0]
+        "no-console": [0],
+        "func-style": [
+            "warn",
+            "declaration",
+            { "allowArrowFunctions": true }
+        ]
     }
 }
