@@ -69,6 +69,10 @@
     "include": "@JamstashDomains"
   },
   {
+    "name": "koel",
+    "include": "@KoelDomains"
+  },
+  {
     "name": "subsonic",
     "include": "@SubsonicDomains"
   },
