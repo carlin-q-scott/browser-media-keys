@@ -36,6 +36,13 @@
       "value": "*.jamstash.com"
     },
     {
+      "name": "KoelDomains",
+      "title": "Koel Domains",
+      "description": "Domains like '*.koel.phanan.net' (separated by simple space)",
+      "type": "string",
+      "value": "*.koel.phanan.net"
+    },
+    {
       "name": "PlexDomains",
       "title": "Plex Domains",
       "description": "Domains like '*.plex.tv http://127.0.0.1:32400/*' (separated by simple space)",
