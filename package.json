@@ -73,8 +73,10 @@
   },
   "scripts": {
     "test": "jpm test -v",
+    "firefox": "jpm run",
     "pandora": "jpm run --binary-args http://www.pandora.com/station/play/3016210680439329380",
     "youtube": "jpm run --binary-args https://www.youtube.com/watch?v=hKitZEncwro",
+    "spotify": "jpm run --binary-args https://play.spotify.com",
     "debug": "jpm run --debug",
     "build": "jpm xpi"
   }
