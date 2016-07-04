@@ -79,5 +79,9 @@
   {
     "name": "music.amazon",
     "include": ["*.music.amazon.com", "*.music.amazon.de"]
+  },
+  {
+    "name": "cbcmusic.ca",
+    "include": "*.cbcmusic.ca"
   }
 ]
