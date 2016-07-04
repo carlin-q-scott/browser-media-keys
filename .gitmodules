@@ -1,6 +1,0 @@
-[submodule "lib/ostypes"]
-	path = lib/ostypes
-	url = git@github.com:Noitidart/ostypes
-[submodule "lib/comm"]
-	path = lib/comm
-	url = git@github.com:Noitidart/Comm
