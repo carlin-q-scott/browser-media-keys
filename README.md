@@ -26,9 +26,7 @@ by installing the ``libglib2.0-0`` package, if not already installed.
 This feature has been tested on Ubuntu 15.04 with Firefox 40.0a2.
 
 Some desktop environments (Xfce, Openbox) uses DBus too, but they [can't work with media keys properly](https://bugzilla.xfce.org/show_bug.cgi?id=8588).
-As a workaround, you can use [mediakeys-daemon script](https://github.com/nandhp/mediakeys-daemon/blob/master/src/mkd.py) to make needed DBus service:```./mkd.py -d```.
-
-If you don't have media keys and want to use hotkeys, you can use any keybinding app your DE have to run [mediakeys-daemon script](https://github.com/nandhp/mediakeys-daemon/blob/master/src/mkd.py):
+As a workaround, you can use [mediakeys-daemon script](https://github.com/nandhp/mediakeys-daemon/blob/master/src/mkd.py) to make needed DBus service:```./mkd.py -d```. Additionally you must use any keybinding app your DE have to run [mediakeys-daemon script](https://github.com/nandhp/mediakeys-daemon/blob/master/src/mkd.py) on media key press: 
 ```
   -p, --play      send play event to all listeners
   -a, --pause     send pause event to all listeners
@@ -36,6 +34,7 @@ If you don't have media keys and want to use hotkeys, you can use any keybinding
   -n, --next      send next-track event to all listeners
   -b, --previous  send previous-track event to all listeners
 ```
+If you don't have media keys and want to use hotkeys, you can use it too.
 
 Building and testing
 --------------------
