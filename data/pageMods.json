@@ -83,5 +83,9 @@
   {
     "name": "cbcmusic.ca",
     "include": "*.cbcmusic.ca"
+  },
+  {
+    "name": "mixcloud.com",
+    "include": "*.mixcloud.com"
   }
 ]
