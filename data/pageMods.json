@@ -45,10 +45,6 @@
     "include": "*.vk.com"
   },
   {
-    "name": "new.vk.com",
-    "include": "*.new.vk.com"
-  },
-  {
     "name": "radio.yandex.ru",
     "include": "*.radio.yandex.ru"
   },
