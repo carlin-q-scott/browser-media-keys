@@ -1,5 +1,5 @@
 {
-	"jscsystemhotkey": "chrome://topick/content/resources/scripts/jscSystemHotkey/",
-	"comm": "chrome://topick/content/resources/scripts/comm/",
-	"ostypes": "chrome://topick/content/resources/scripts/ostypes/"
+	"jscsystemhotkey": "resource://jid1-4gp7z3tkud3tzg-at-jetpack/lib/jscSystemHotkey/",
+	"comm": "resource://jid1-4gp7z3tkud3tzg-at-jetpack/lib/comm/",
+	"ostypes": "resource://jid1-4gp7z3tkud3tzg-at-jetpack/lib/ostypes/"
 }
