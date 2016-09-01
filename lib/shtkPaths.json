@@ -1,0 +1,5 @@
+{
+	"jscsystemhotkey": "chrome://topick/content/resources/scripts/jscSystemHotkey/",
+	"comm": "chrome://topick/content/resources/scripts/comm/",
+	"ostypes": "chrome://topick/content/resources/scripts/ostypes/"
+}
