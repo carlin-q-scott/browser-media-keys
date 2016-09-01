@@ -4,3 +4,6 @@
 [submodule "lib/comm"]
 	path = lib/comm
 	url = git@github.com:Noitidart/Comm
+[submodule "lib/jscSystemHotkey"]
+	path = lib/jscSystemHotkey
+	url = git@github.com:Noitidart/jscSystemHotkey
