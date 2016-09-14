@@ -55,6 +55,13 @@
       "description": "Domains like '*.demo.subsonic.org' (separated by simple space)",
       "type": "string",
       "value": "*.demo.subsonic.org"
+    },
+    {
+      "name": "MadsonicDomains",
+      "title": "Madsonic Domains",
+      "description": "Domains like '*.demo.madsonic.org' (separated by simple space)",
+      "type": "string",
+      "value": "*.demo.madsonic.org"
     }
   ],
   "permissions": {
