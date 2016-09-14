@@ -1,3 +1,5 @@
+/*eslint-env browser */
+
 /**
  * MediaKeys namespace.
  * 
@@ -58,6 +60,38 @@ MediaKeys.Init = function()
 		pauseButton.click();
 		self.port.emit("Stop");
 	});
+
+	if (MediaKeys.trackInfo && Notification.permission != 'denied')
+	{
+		function setupTrackInfoUpdates()
+		{
+			function notifyNewTrack(mutation)
+			{
+				new Notification("Now Playing", {
+			    	body: MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfo, MediaKeys.basePlayer).innerText 
+			  	});
+			}
+			
+			var currentTrackObservable;
+			//setTimeout
+			if (MediaKeys.trackInfoContainer) 
+				currentTrackObservable = MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfoContainer, MediaKeys.basePlayer);
+			else 
+				currentTrackObservable = MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfo, MediaKeys.basePlayer);
+
+			if (currentTrackObservable) //clear timer and finish setup
+
+			var currentTrackObserver = new MutationObserver(notifyNewTrack);
+			currentTrackObserver.observe(currentTrackObservable, {
+				childList: true,
+				characterData: true,
+				subtree: true 
+			});
+		}
+
+		if (Notification.permission == 'granted') setupTrackInfoUpdates();
+		else Notification.requestPermission().then(function(result) { if (result == 'granted') setupTrackInfoUpdates(); });
+	}
 };
 
 MediaKeys.Init();

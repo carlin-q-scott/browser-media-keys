@@ -1,5 +1,4 @@
 var tabs = require("sdk/tabs");
-var { viewFor } = require("sdk/view/core");
 var { data } = require("sdk/self");
 var { setTimeout } = require("sdk/timers");
 var pageWorker;

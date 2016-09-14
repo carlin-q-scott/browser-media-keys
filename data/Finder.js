@@ -1,3 +1,5 @@
+/*eslint-env browser */
+
 /**
  * MediaKeys namespace.
  */

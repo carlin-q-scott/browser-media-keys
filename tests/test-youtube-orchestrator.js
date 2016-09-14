@@ -15,7 +15,7 @@ function OpenMediaWebsiteMock(pageDomain, done)
         setTimeout(done, 100);
     });
 
-    tabs[0].url = data.url("../tests/" + pageDomain + ".html");
+    tabs.activeTab.url = data.url("../tests/" + pageDomain + ".html");
 }
 
 exports["test play on YouTube.com"] = function(assert, done)
@@ -61,6 +61,28 @@ exports["test stop playing on YouTube.com"] = function(assert, done)
         TestMediaEvent("MediaStop", "Stop", assert, done);
     });
 };
+
+exports["test detach"] = function(assert, done)
+{
+    var checkForMediaKeys = {
+        contentScript: "self.port.emit('mediaKeysPresent', document.getElementById('media-keys') != null)"
+    };
+
+    OpenMediaWebsiteMock("youtube.com", function() {
+        tabs.activeTab.attach(checkForMediaKeys)
+            .port.once("mediaKeysPresent", function(mediaKeysPresent){
+                assert.ok(mediaKeysPresent, "page script successfully added");
+            });
+        pageWorker.port.emit("detach");
+        setTimeout(function() {
+            tabs.activeTab.attach(checkForMediaKeys)
+            .port.once("mediaKeysPresent", function(mediaKeysPresent){
+                assert.ok(!mediaKeysPresent, "page script successfully removed");
+                done();
+            });
+        }, 150);
+    });
+}
 
 function TestMediaEvent(mediaEvent, mediaEventOutcome, assert, done)
 {

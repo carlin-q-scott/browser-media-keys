@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach",
+            "type": "firefox",
+            "request": "attach",
+            "port": 6080,
+            "url": "resource://jid1-4gp7z3tkud3tzg-at-jetpack/index.js",
+            "webRoot": "${workspaceRoot}"
+        }
+    ]
+}

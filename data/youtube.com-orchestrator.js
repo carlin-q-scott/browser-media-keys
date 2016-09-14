@@ -1,3 +1,4 @@
+/*eslint-env browser */
 /**
  * MediaKeys namespace.
  */
@@ -5,7 +6,7 @@ if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
 MediaKeys.Init = function()
 {
-    var maxPlayerLoadTime = 3000;
+    var maxPlayerLoadTime = 1500;
     var checkForPlayerInteval = 250;
 
     var attemptToAttachPageScript = function() {
@@ -14,7 +15,7 @@ MediaKeys.Init = function()
         if (maxPlayerLoadTime == 0) {
             console.log("didn't find youtube player");
             clearInterval(intervalId);
-            self.port.emit("detach");
+            self.port.emit("self-destruct");
             return;
         }
         if (!window.document.querySelector('div.html5-video-player')) return; //because there's no youtube player
@@ -51,14 +52,21 @@ MediaKeys.Init = function()
             window.postMessage("MediaStop", pageDomain)
         });
 
-        window.addEventListener("message", function (event) {
-            console.log(event.data);
-            self.port.emit(event.data);
-        });
+        function messageRelay(message)
+        {
+            //console.log(event.data);
+            self.port.emit(message.data);            
+        }
+        window.addEventListener("message", messageRelay);
 
         self.port.on("detach", function () {
-            if (document.body !== undefined && document.body.contains(pageScript)) document.body.removeChild(pageScript);
-            self.port.emit("detach");
+            try {
+                window.removeEventListener("message", messageRelay)
+                document.body.removeChild(pageScript);
+            }
+            catch (exception) {
+                //console.log("cannot detach youtube page script because page is closed or otherwise innaccessible.");
+            }
         });
     };
 

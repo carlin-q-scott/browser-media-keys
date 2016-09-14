@@ -6,18 +6,41 @@
     "name": "Carlin Scott",
     "email": "carlin.q.scott@gmail.com"
   },
-  "contributors": ["David Beitey"],
+  "contributors": [
+    "David Beitey <david@davidjb.com>"
+  ],
   "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
   "license": "MPL-2.0",
-  "version": "0.7.0",
+  "version": "0.7.6",
   "icon": "icon.png",
   "preferences": [
     {
-        "name": "JamstashDomains",
-        "title": "Jamstash Domains",
-        "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
-        "type": "string",
-        "value": "*.jamstash.com"
+      "name": "UseMkWin",
+      "title": "Windows alternative key support",
+      "description": "Some Windows keyboard software blocks hotkeys. This option may fix this issue.",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "Autoplay",
+      "title": "Automatically play/pause media",
+      "description": "Actively playing media is paused when starting another media player and resumed once that one stops playing",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "JamstashDomains",
+      "title": "Jamstash Domains",
+      "description": "Domains like *.jamstash.com own-jamstash.com (separated by simple space)",
+      "type": "string",
+      "value": "*.jamstash.com"
+    },
+    {
+      "name": "KoelDomains",
+      "title": "Koel Domains",
+      "description": "Domains like '*.koel.phanan.net' (separated by simple space)",
+      "type": "string",
+      "value": "*.koel.phanan.net"
     },
     {
       "name": "PlexDomains",
@@ -34,6 +57,9 @@
       "value": "*.demo.subsonic.org"
     }
   ],
+  "permissions": {
+    "private-browsing": true
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/carlin-q-scott/browser-media-keys"
@@ -42,12 +68,16 @@
     "url": "https://github.com/carlin-q-scott/browser-media-keys/issues"
   },
   "devDependencies": {
+    "eslint": "^2.9.0",
     "jpm": "*"
   },
   "scripts": {
     "test": "jpm test -v",
+    "firefox": "jpm run",
     "pandora": "jpm run --binary-args http://www.pandora.com/station/play/3016210680439329380",
     "youtube": "jpm run --binary-args https://www.youtube.com/watch?v=hKitZEncwro",
-    "debug": "jpm run --debug"
+    "spotify": "jpm run --binary-args https://play.spotify.com",
+    "debug": "jpm run --debug",
+    "build": "jpm xpi"
   }
 }

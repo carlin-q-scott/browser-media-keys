@@ -53,6 +53,10 @@
     "include": "*.deezer.com"
   },
   {
+    "name": "overcast.fm",
+    "include": "*.overcast.fm"
+  },
+  {
     "name": "plex.tv",
     "include": "@PlexDomains"
   },
@@ -61,7 +65,23 @@
     "include": "@JamstashDomains"
   },
   {
+    "name": "koel",
+    "include": "@KoelDomains"
+  },
+  {
     "name": "subsonic",
     "include": "@SubsonicDomains"
+  },
+  {
+    "name": "music.amazon",
+    "include": ["*.music.amazon.com", "*.music.amazon.de"]
+  },
+  {
+    "name": "cbcmusic.ca",
+    "include": "*.cbcmusic.ca"
+  },
+  {
+    "name": "mixcloud.com",
+    "include": "*.mixcloud.com"
   }
 ]
