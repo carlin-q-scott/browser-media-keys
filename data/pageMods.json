@@ -83,5 +83,9 @@
   {
     "name": "mixcloud.com",
     "include": "*.mixcloud.com"
+  },
+  {
+    "name": "hypem.com",
+    "include": "*.hypem.com"
   }
 ]
