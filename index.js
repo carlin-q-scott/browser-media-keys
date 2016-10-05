@@ -8,7 +8,7 @@ exports.main = function (options, callbacks) {
 };
 
 exports.onUnload = function (reason) {
-    hotkeyManager.UnregisterHotkeys();
+	hotkeyManager.Destroy();
     pageWorkerManager.Destroy();
 };
 
