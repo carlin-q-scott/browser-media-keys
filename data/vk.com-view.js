@@ -3,7 +3,6 @@
  */
 if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
-MediaKeys.playButton = "//div[(@id='pd_play' or @id='ac_play' or @id='gp_play') and not(contains(@class,'playing'))]";
-MediaKeys.pauseButton = "//div[(@id='pd_play' or @id='ac_play' or @id='gp_play') and contains(@class,'playing')]";
-MediaKeys.skipButton = "//div[@class='next ctrl']";
-MediaKeys.previousButton = "//div[@class='prev ctrl']";
+MediaKeys.playButton = MediaKeys.pauseButton = "//button[@class='top_audio_player_btn top_audio_player_play']";
+MediaKeys.skipButton = "//button[@class='top_audio_player_btn top_audio_player_next']";
+MediaKeys.previousButton = "//button[@class='top_audio_player_btn top_audio_player_prev']";

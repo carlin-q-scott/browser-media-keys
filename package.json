@@ -11,7 +11,7 @@
   ],
   "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
   "license": "MPL-2.0",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "icon": "icon.png",
   "preferences": [
     {
@@ -26,7 +26,7 @@
       "title": "Automatically play/pause media",
       "description": "Actively playing media is paused when starting another media player and resumed once that one stops playing",
       "type": "bool",
-      "value": true
+      "value": false
     },
     {
       "name": "JamstashDomains",
@@ -55,10 +55,18 @@
       "description": "Domains like '*.demo.subsonic.org' (separated by simple space)",
       "type": "string",
       "value": "*.demo.subsonic.org"
+    },
+    {
+      "name": "MadsonicDomains",
+      "title": "Madsonic Domains",
+      "description": "Domains like '*.demo.madsonic.org' (separated by simple space)",
+      "type": "string",
+      "value": "*.demo.madsonic.org"
     }
   ],
   "permissions": {
-    "private-browsing": true
+    "private-browsing": true,
+    "multiprocess": true
   },
   "repository": {
     "type": "git",
@@ -68,8 +76,8 @@
     "url": "https://github.com/carlin-q-scott/browser-media-keys/issues"
   },
   "devDependencies": {
-    "eslint": "^2.9.0",
-    "jpm": "*"
+    "eslint": "2.9.0",
+    "jpm": "1.2.0"
   },
   "scripts": {
     "test": "jpm test -v",

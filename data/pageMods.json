@@ -45,10 +45,6 @@
     "include": "*.vk.com"
   },
   {
-    "name": "new.vk.com",
-    "include": "*.new.vk.com"
-  },
-  {
     "name": "radio.yandex.ru",
     "include": "*.radio.yandex.ru"
   },
@@ -77,6 +73,10 @@
     "include": "@SubsonicDomains"
   },
   {
+    "name": "madsonic",
+    "include": "@MadsonicDomains"
+  },
+  {
     "name": "music.amazon",
     "include": ["*.music.amazon.com", "*.music.amazon.de"]
   },
@@ -87,5 +87,9 @@
   {
     "name": "mixcloud.com",
     "include": "*.mixcloud.com"
+  },
+  {
+    "name": "hypem.com",
+    "include": "*.hypem.com"
   }
 ]
