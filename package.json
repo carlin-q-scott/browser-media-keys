@@ -11,7 +11,7 @@
   ],
   "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
   "license": "MPL-2.0",
-  "version": "0.7.6",
+  "version": "0.7.9",
   "icon": "icon.png",
   "preferences": [
     {
@@ -65,7 +65,8 @@
     }
   ],
   "permissions": {
-    "private-browsing": true
+    "private-browsing": true,
+    "multiprocess": true
   },
   "repository": {
     "type": "git",
@@ -75,8 +76,8 @@
     "url": "https://github.com/carlin-q-scott/browser-media-keys/issues"
   },
   "devDependencies": {
-    "eslint": "^2.9.0",
-    "jpm": "*"
+    "eslint": "2.9.0",
+    "jpm": "1.2.0"
   },
   "scripts": {
     "test": "jpm test -v",
