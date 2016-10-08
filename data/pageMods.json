@@ -61,6 +61,10 @@
     "include": "@PlexDomains"
   },
   {
+    "name": "pluralsight.com",
+    "include": "*.app.pluralsight.com"
+  },
+  {
     "name": "jamstash",
     "include": "@JamstashDomains"
   },
