@@ -15,8 +15,21 @@ website media players using the media keys on your keyboard.
 If you're not using Windows or compatible Linux environment, then this plugin
 requires that a browser window is active.
 
-DBus support on Linux
+Support on Linux
 ---------------------
+
+####After v.1.0
+Now this add-on uses XCB to capture key presses.
+
+If you don't have media keys, you can simulate them by add hotkeys to these commands:
+
+`xdotool keyup alt keyup super keyup a key XF86AudioPlay` - play/pause, where you must add `keyup [key]` for all buttons on which you added hotkey (this example is for super+alt+a)
+
+`xdotool keyup alt keyup super keyup x key XF86AudioNext` - Next, example for super+alt+x
+
+`xdotool keyup alt keyup super keyup z key XF86AudioPrev` - Prev, example for super+alt+z
+
+####Before v.0.7.9
 
 This add-on listens for global media key presses on Linux via DBus and as such,
 requires the ``glib``, ``gobject`` and ``gio`` shared libraries to be installed
