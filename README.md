@@ -23,7 +23,7 @@ Now this add-on uses XCB to capture key presses.
 
 If you don't have media keys, you can simulate them by add hotkeys to these commands:
 
-`xdotool keyup alt keyup super keyup a key XF86AudioPlay` - play/pause, where you must add `keyup [key]` for all buttons on which you added hotkey (this example is for super+alt+a)
+`xdotool keyup alt keyup super keyup a key XF86AudioPlay` - play/pause, where you must add `keyup [key]` for all keys on which you added hotkey (this example is for super+alt+a)
 
 `xdotool keyup alt keyup super keyup x key XF86AudioNext` - Next, example for super+alt+x
 
