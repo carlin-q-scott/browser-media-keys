@@ -96,10 +96,6 @@
     "name": "hypem.com",
     "include": "*.hypem.com"
   },
-    {
-    "name": "hypem.com",
-    "include": "*.hypem.com"
-  },
   {
 	"name": "netflix.com",
 	"include": "*.netflix.com"
