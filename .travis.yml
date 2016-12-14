@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "stable"
 addons:
-  firefox: "47.0.1"
+  firefox: "50.0.2"
 
 env:
   global:
