@@ -4,3 +4,4 @@ icon.png
 .idea/
 node_modules
 *.log
+/.vs/VSWorkspaceState.json
