@@ -4,5 +4,5 @@
  */
 if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
-MediaKeys.playButton = "//div[@class='playbutton-cont col' and not(contains(@style,'none'))]";
-MediaKeys.pauseButton = "//div[@class='playbutton-cont col' and not(contains(@style,'none'))]";
+MediaKeys.playButton = "//div[contains(@class,'playbutton') and not(contains(@style,'none'))]";
+MediaKeys.pauseButton = "//div[contains(@class,'playbutton') and not(contains(@style,'none'))]";
