@@ -82,7 +82,7 @@
   },
   {
     "name": "music.amazon",
-    "include": ["*.music.amazon.com", "*.music.amazon.de"]
+    "include": ["*.music.amazon.com", "*.music.amazon.de", "*.music.amazon.co.uk"]
   },
   {
     "name": "cbcmusic.ca",
@@ -95,5 +95,17 @@
   {
     "name": "hypem.com",
     "include": "*.hypem.com"
+  },
+  {
+	"name": "netflix.com",
+	"include": "*.netflix.com"
+  },
+  {
+	"name": "tunein.com",
+	"include": "*.tunein.com"
+  },
+  {
+	"name": "di.fm",
+	"include": "*.di.fm"
   }
 ]
