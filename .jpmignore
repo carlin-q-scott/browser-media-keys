@@ -5,3 +5,5 @@ tests/*
 node_modules/*
 *.xpi
 jsconfig.json
+firefox/*
+firefox*.tar.bz2
