@@ -63,30 +63,30 @@ MediaKeys.Init = function()
 
 	if (MediaKeys.trackInfo && Notification.permission != 'denied')
 	{
-		function setupTrackInfoUpdates()
+		var setupTrackInfoUpdates = function ()
 		{
-			function notifyNewTrack(mutation)
+			function notifyNewTrack()
 			{
 				new Notification("Now Playing", {
-			    	body: MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfo, MediaKeys.basePlayer).innerText 
-			  	});
+					body: MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfo, MediaKeys.basePlayer).innerText 
+				});
 			}
 			
 			var currentTrackObservable;
-			//setTimeout
+			
 			if (MediaKeys.trackInfoContainer) 
 				currentTrackObservable = MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfoContainer, MediaKeys.basePlayer);
 			else 
 				currentTrackObservable = MediaKeys.GetSingleElementByXpath(MediaKeys.trackInfo, MediaKeys.basePlayer);
 
-			if (currentTrackObservable) //clear timer and finish setup
-
-			var currentTrackObserver = new MutationObserver(notifyNewTrack);
-			currentTrackObserver.observe(currentTrackObservable, {
-				childList: true,
-				characterData: true,
-				subtree: true 
-			});
+			if (currentTrackObservable){
+				var currentTrackObserver = new MutationObserver(notifyNewTrack);
+				currentTrackObserver.observe(currentTrackObservable, {
+					childList: true,
+					characterData: true,
+					subtree: true 
+				});
+			}
 		}
 
 		if (Notification.permission == 'granted') setupTrackInfoUpdates();
