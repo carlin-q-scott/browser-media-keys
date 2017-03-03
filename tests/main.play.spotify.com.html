@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify Player</title>
+</head>
+<body>
+<h1 id='status'>Play</h1>
 <script>
     function togglePlay()
     {
@@ -14,10 +22,12 @@
             document.getElementById("status").innerHTML = "Play";
         }
     }
+    
     function next()
     {
         document.getElementById("status").innerHTML = "Next";
     }
+    
     function previous()
     {
         document.getElementById("status").innerHTML = "Previous";
