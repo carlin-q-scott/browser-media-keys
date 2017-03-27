@@ -3,15 +3,15 @@ language: node_js
 node_js:
   - "stable"
 
-addons:
-  firefox: "47.0.1"
 
 env:
   global:
     - DISPLAY=:99.0
-    - JPM_FIREFOX_BINARY=/usr/local/bin/firefox
+    - JPM_FIREFOX_BINARY=./firefox/firefox
+    
 git:
   submodules: false
 
-before_install:
+before_script:
+  - bash fetch-firefox.sh release-linux64-add-on-devel
   - sh -e /etc/init.d/xvfb start
