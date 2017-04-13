@@ -38,32 +38,32 @@ exports["test stop playing on Pandora.com"] = function(assert, done)
     });
 };
 
-exports["test play/pause on TidalHiFi.com"] = function(assert, done)
+exports["test play/pause on tidal.com"] = function(assert, done)
 {
-    OpenMediaWebsiteMock("tidalhifi.com", function() {
+    OpenMediaWebsiteMock("tidal.com", function() {
         TestMediaEvent("MediaPlayPause", "Pause", assert, function () {
             TestMediaEvent("MediaPlayPause", "Play", assert, done);
         });
     });
 };
 
-exports["test play next track on TidalHiFi.com"] = function(assert, done)
+exports["test play next track on tidal.com"] = function(assert, done)
 {
-    OpenMediaWebsiteMock("tidalhifi.com", function() {
+    OpenMediaWebsiteMock("tidal.com", function() {
         TestMediaEvent("MediaTrackNext", "Next", assert, done);
     });
 };
 
-exports["test play previous track on TidalHiFi.com"] = function(assert, done)
+exports["test play previous track on tidal.com"] = function(assert, done)
 {
-    OpenMediaWebsiteMock("tidalhifi.com", function() {
+    OpenMediaWebsiteMock("tidal.com", function() {
         TestMediaEvent("MediaTrackPrevious", "Previous", assert, done);
     });
 };
 
-exports["test stop playing on TidalHiFi.com"] = function(assert, done)
+exports["test stop playing on tidal.com"] = function(assert, done)
 {
-    OpenMediaWebsiteMock("tidalhifi.com", function() {
+    OpenMediaWebsiteMock("tidal.com", function() {
         TestMediaEvent("MediaStop", "Stop", assert, done);
     });
 };

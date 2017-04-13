@@ -9,14 +9,14 @@ Build Status
 Description
 ==================
 
-Lets you control various media sites using the media keys on your keyboard without having the Firefox window active. Supported Sites: youtube, pandora, spotify, bandcamp, google play, yandex, soundcloud, tidalhifi, deezer, plex, vk and more.
+Lets you control various media sites using the media keys on your keyboard without having the Firefox window active. Supported Sites: youtube, pandora, spotify, bandcamp, google play, yandex, soundcloud, tidal, deezer, plex, vk and more.
 
  	
 Your media keys should work without the Firefox window active for Linux (w/ Gnome) and Windows but please let us know if this isn't the case by providing us with the version of your operating system, and model of keyboard or laptop you're using.
 
 Please find us on GitHub if you'd like to request features, post issues or contribute to the project.
 
-Supported Sites: youtube, pandora, spotify, bandcamp, google play, yandex, soundcloud, tidalhifi, deezer, plex, vk, subsonic, jamstash, overcast.fm, music.amazon.co.uk, music.amazon.com, di.fm, netflix.com, and tunein.com.
+Supported Sites: youtube, pandora, spotify, bandcamp, google play, yandex, soundcloud, tidal, deezer, plex, vk, subsonic, jamstash, overcast.fm, music.amazon.co.uk, music.amazon.com, di.fm, netflix.com, and tunein.com.
 
 
 DBus support on Linux
