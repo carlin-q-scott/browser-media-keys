@@ -10,14 +10,14 @@
     function togglePlay()
     {
         var playButton = document.getElementsByClassName("control-button")[1];
-        if (playButton.className == "control-button spoticon-play-32")
+        if (playButton.className == "control-button spoticon-pause-32")
         {
-            playButton.className = "control-button spoticon-pause-32";
+            playButton.className = "control-button spoticon-play-32";
             playButton.innerHTML = "Play";
             document.getElementById("status").innerHTML = "Pause";
         }
         else {
-            playButton.className = "control-button spoticon-play-32";
+            playButton.className = "control-button spoticon-pause-32";
             playButton.innerHTML = "Pause";
             document.getElementById("status").innerHTML = "Play";
         }
