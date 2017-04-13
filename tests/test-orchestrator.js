@@ -68,6 +68,36 @@ exports["test stop playing on TidalHiFi.com"] = function(assert, done)
     });
 };
 
+exports["test play/pause on open.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("open.spotify.com", function(){
+        TestMediaEvent("MediaPlayPause", "Pause", assert, function() {
+            TestMediaEvent("MediaPlayPause", "Play", assert, done);
+        });
+    });
+};
+
+exports["test play next track on open.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("open.spotify.com", function() {
+        TestMediaEvent("MediaTrackNext", "Next", assert, done);
+    });
+};
+
+exports["test play previous track on open.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("open.spotify.com", function() {
+        TestMediaEvent("MediaTrackPrevious", "Previous", assert, done);
+    });
+};
+
+exports["test stop playing on open.spotify.com"] = function(assert, done)
+{
+    OpenMediaWebsiteMock("open.spotify.com", function() {
+        TestMediaEvent("MediaStop", "Stop", assert, done);
+    });
+};
+
 exports["test play/pause on player.spotify.com"] = function(assert, done)
 {
     OpenMediaWebsiteMock("player.spotify.com", function(){

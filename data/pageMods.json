@@ -33,6 +33,10 @@
     "include": "*.player.spotify.com"
   },
   {
+    "name": "open.spotify.com",
+    "include": "*.open.spotify.com"
+  },
+  {
     "name": "soundcloud.com",
     "include": "*.soundcloud.com"
   },
