@@ -9,25 +9,23 @@
 <script>
     function togglePlay()
     {
-        var playButton = document.getElementById("play-pause");
-        if (playButton.className == "playing")
+        var playButton = document.getElementsByClassName("control-button")[1];
+        if (playButton.className == "control-button spoticon-pause-32")
         {
-            playButton.className = "";
+            playButton.className = "control-button spoticon-play-32";
             playButton.innerHTML = "Play";
             document.getElementById("status").innerHTML = "Pause";
         }
         else {
-            playButton.className = "playing";
+            playButton.className = "control-button spoticon-pause-32";
             playButton.innerHTML = "Pause";
             document.getElementById("status").innerHTML = "Play";
         }
     }
-
     function next()
     {
         document.getElementById("status").innerHTML = "Next";
     }
-
     function previous()
     {
         document.getElementById("status").innerHTML = "Previous";
@@ -35,8 +33,8 @@
 </script>
 </body>
 <footer>
-    <button id="play-pause" class="playing" onclick="togglePlay()">Pause</button>
-    <button id="next" onclick="next()">Next</button>
-    <button id="previous" onclick="previous()">Previous</button>
+    <button class="control-button spoticon-skip-back-24" onclick="previous()">Previous</button>
+    <button class="control-button spoticon-pause-32" onclick="togglePlay()">Pause</button>
+    <button class="control-button spoticon-skip-forward-24" onclick="next()">Next</button>
 </footer>
 </html>

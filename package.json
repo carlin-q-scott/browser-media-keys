@@ -11,7 +11,7 @@
   ],
   "id": "jid1-4GP7z3tkUd3Tzg@jetpack",
   "license": "MPL-2.0",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "icon": "icon.png",
   "preferences": [
     {
@@ -84,7 +84,7 @@
     "firefox": "jpm run",
     "pandora": "jpm run --binary-args http://www.pandora.com/station/play/3016210680439329380",
     "youtube": "jpm run --binary-args https://www.youtube.com/watch?v=hKitZEncwro",
-    "spotify": "jpm run --binary-args https://play.spotify.com",
+    "spotify": "jpm run --binary-args https://open.spotify.com",
     "debug": "jpm run --debug",
     "build": "jpm xpi"
   }
