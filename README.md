@@ -19,8 +19,22 @@ Please find us on GitHub if you'd like to request features, post issues or contr
 Supported Sites: youtube, pandora, spotify, bandcamp, google play, yandex, soundcloud, tidal, deezer, plex, vk, subsonic, jamstash, overcast.fm, music.amazon.co.uk, music.amazon.com, di.fm, netflix.com, and tunein.com.
 
 
-DBus support on Linux
+Support on Linux
 ---------------------
+#### After v.1.0
+Now this add-on uses XCB to capture key presses.
+
+**Requirements**: `libxcb-keysyms` library (`libxcb-keysyms1` package for Debian-like distributives)
+
+**If you don't have media keys**, you can simulate them by these commands:
+
+`xdotool keyup alt keyup super keyup a key XF86AudioPlay` - play/pause, where you must add `keyup [key]` for all keys of your hotkey (this example is for super+alt+a)
+
+`xdotool keyup alt keyup super keyup x key XF86AudioNext` - Next, example for super+alt+x
+
+`xdotool keyup alt keyup super keyup z key XF86AudioPrev` - Prev, example for super+alt+z
+
+#### Before v.0.7.9
 
 This add-on listens for global media key presses on Linux via DBus and as such,
 requires the ``glib``, ``gobject`` and ``gio`` shared libraries to be installed
