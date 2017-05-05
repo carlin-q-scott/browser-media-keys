@@ -2,11 +2,13 @@ language: node_js
 node_js:
   - "stable"
 
+addons:
+  firefox: latest-unsigned
+
 env:
   global:
     - DISPLAY=:99.0
     - JPM_FIREFOX_BINARY=./firefox/firefox
 
 before_script:
-  - bash fetch-firefox.sh release-linux64-add-on-devel
   - sh -e /etc/init.d/xvfb start
