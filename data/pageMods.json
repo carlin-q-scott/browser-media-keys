@@ -111,5 +111,9 @@
   {
 	"name": "di.fm",
 	"include": "*.di.fm"
+  },
+  {
+	"name": "udemy.com",
+	"include": "*.udemy.com"
   }
 ]
