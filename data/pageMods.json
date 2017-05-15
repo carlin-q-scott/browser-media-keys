@@ -109,6 +109,10 @@
 	"include": "*.tunein.com"
   },
   {
+    "name": "pocketcasts.com",
+    "include": "play.pocketcasts.com"
+  },
+  {
 	"name": "di.fm",
 	"include": "*.di.fm"
   },
