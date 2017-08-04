@@ -5,26 +5,21 @@
 if (typeof MediaKeys == "undefined") var MediaKeys = {};
 
 MediaKeys.init = function() {
-    var player = document.querySelector('div.html5-video-player');
-    var pageDomain = window.location.origin;
-    var PlayerStates = {
-        unstarted: -1,
-        ended: 0,
-        playing: 1,
-        paused: 2
+    let player = document.querySelector('div.html5-video-player');
+    let video = document.querySelector('video');
+    let pageDomain = window.location.origin;
+
+    let playVideo = function () {
+        video.play();
     };
-    var playVideo = function () {
-        player.playVideo();
-    };
-    var pauseVideo = function () {
-        player.pauseVideo();
+    let pauseVideo = function () {
+        video.pause();
     };
 
     window.addEventListener("message", function (event) {
         switch (event.data) {
             case "MediaPlayPause":
-                var status = player.getPlayerState();
-                if (status != PlayerStates.playing) {
+                if (video.paused) {
                     playVideo();
                 }
                 else {
@@ -51,26 +46,31 @@ MediaKeys.init = function() {
                 break;
 
             case "MediaStop":
-                player.stopVideo();
+                if (player) player.stopVideo();
+                else pauseVideo();
                 break;
         }
     });
 
     //automatically pause other players while playing a video and resume them when done
-    var latestState;
+    let lastState;
     window.setInterval(function () {
-        var state = player.getPlayerState();
-        if (state != latestState) {
-            console.log(`youtube player state transitioned from ${latestState} to ${state}`);
-            latestState = state;
-            switch (state) {
-                case PlayerStates.playing:
+        let currentState;
+        if (video.paused) currentState = "paused";
+        else if (video.ended) currentState = "ended";
+        else currentState = "playing";
+
+        if (currentState != lastState) {
+            console.log(`player state transitioned from ${lastState} to ${currentState}`);
+            lastState = currentState;
+            switch (currentState) {
+                case "playing":
                     window.postMessage("Play", pageDomain);
                     break;
-                case PlayerStates.paused:
+                case "paused":
                     window.postMessage("Pause", pageDomain);
                     break;
-                case PlayerStates.ended:
+                case "ended":
                     window.postMessage("Stop", pageDomain);
                     break;
             }
