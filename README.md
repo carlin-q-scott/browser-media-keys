@@ -24,7 +24,7 @@ Support on Linux
 #### After v.1.0
 Now this add-on uses XCB to capture key presses.
 
-**Requirements**: `libxcb-keysyms` library (`libxcb-keysyms1` package for Debian-like distributives)
+**Requirements**: `libxcb-keysyms` library (`libxcb-keysyms1` package for deb-based distributives, `xcb-util-keysyms` for yum-based ones)
 
 **If you don't have media keys**, you can simulate them by these commands:
 
