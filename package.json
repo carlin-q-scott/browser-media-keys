@@ -76,7 +76,7 @@
     "url": "https://github.com/carlin-q-scott/browser-media-keys/issues"
   },
   "devDependencies": {
-    "eslint": "2.9.0",
+    "eslint": "6.5.1",
     "jpm": "1.2.0"
   },
   "scripts": {
