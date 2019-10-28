@@ -5,6 +5,7 @@ Build Status
 |-------|---------|
 | [![Linux Build Status](https://travis-ci.org/carlin-q-scott/browser-media-keys.svg?branch=master)](https://travis-ci.org/carlin-q-scott/browser-media-keys) | [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/carlin-q-scott/browser-media-keys)](https://ci.appveyor.com/project/carlin-q-scott/browser-media-keys) |
 
+**NOTE: AFTER 52 VERSION FIREFOX DROPPED LEGACY ADDONS SUPPORT, AND DIDN'T GIVE NEW API TO PROPERLY SUPPORT GLOBAL HOTKEYS!** Please see [this issue](https://github.com/carlin-q-scott/browser-media-keys/issues/160).
 
 Description
 ==================
